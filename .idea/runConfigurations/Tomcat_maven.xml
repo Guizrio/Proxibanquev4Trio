@@ -2,14 +2,14 @@
   <configuration default="false" name="Tomcat maven" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.0.M9" ALTERNATIVE_JRE_ENABLED="false">
     <option name="UPDATING_POLICY" value="restart-server" />
     <deployment>
-      <file path="$PROJECT_DIR$/webservices/target/proxibanquev4trio-webservices-0.0.1-SNAPSHOT.war">
-        <settings>
-          <option name="CONTEXT_PATH" value="/webservices" />
-        </settings>
-      </file>
-      <file path="$PROJECT_DIR$/presentation/target/proxibanquev4trio-presentation.war">
+      <file path="$PROJECT_DIR$/presentation/target/proxibanquev4trio-presentation-0.0.1-SNAPSHOT.war">
         <settings>
           <option name="CONTEXT_PATH" value="/presentation" />
+        </settings>
+      </file>
+      <file path="$PROJECT_DIR$/webservices/target/proxibanquev4trio-webservices.war">
+        <settings>
+          <option name="CONTEXT_PATH" value="/webservices" />
         </settings>
       </file>
     </deployment>
