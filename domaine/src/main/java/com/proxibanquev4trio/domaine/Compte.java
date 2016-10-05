@@ -1,0 +1,86 @@
+package com.proxibanquev4trio.domaine;
+
+import java.sql.Timestamp;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+/**
+ * Classe abstraite compte, définissant les propriétés de base d'un compte
+ * bancaire: 
+ * 
+ * numéro du compte : long, 
+ * le solde du compte : Double, 
+ * la date d'ouverture du compte : Timestamp, 
+ * 
+ * @author 
+ *
+ */
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public abstract class Compte {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+    private java.sql.Timestamp dateouverture;
+    private Double solde;
+    protected String type;
+
+    
+    /**
+	 * Constructeur de la classe Compte avec comme paramètre :
+	 * 
+	 * @param id:
+	 *            le numéro du compte : long,
+	 * @param dateouverture:
+	 *            la date d'ouverture du compte : Timestamp,
+	 * @param solde:
+	 *            le solde du compte : double
+	 *            
+	 */
+    protected Compte(Long id, Timestamp dateouverture, Double solde) {
+        this.id = id;
+        this.dateouverture = dateouverture;
+        this.solde = solde;
+    }
+    
+    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public java.sql.Timestamp getDateouverture() {
+        return dateouverture;
+    }
+
+    public void setDateouverture(java.sql.Timestamp dateouverture) {
+        this.dateouverture = dateouverture;
+    }
+
+    public Double getSolde() {
+        return solde;
+    }
+
+    public void setSolde(Double solde) {
+        this.solde = solde;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+
+
+	public Compte() {
+		super();
+	}
+}
