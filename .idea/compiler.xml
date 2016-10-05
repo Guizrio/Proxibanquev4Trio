@@ -26,6 +26,7 @@
         <module name="domaine" />
         <module name="presentation" />
         <module name="services" />
+        <module name="webservices" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
