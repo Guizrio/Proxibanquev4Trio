@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="presentation:war exploded">
-    <output-path>$PROJECT_DIR$/presentation/target/proxibanquev4trio-presentation-0.0.1-SNAPSHOT</output-path>
+  <artifact type="exploded-war" name="webservices:war exploded">
+    <output-path>$PROJECT_DIR$/webservices/target/proxibanquev4trio-webservices</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="presentation" />
+          <element id="module-output" name="webservices" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:1.4.1.RELEASE" />
@@ -111,9 +111,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/presentation/target/proxibanquev4trio-presentation-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/webservices/target/proxibanquev4trio-webservices/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="presentation/web/Web" />
+      <element id="javaee-facet-resources" facet="webservices/web/Web" />
     </root>
   </artifact>
 </component>

@@ -1,15 +1,11 @@
 package com.proxibanquev4trio.dao;
 
-import java.util.List;
-
+import com.proxibanquev4trio.domaine.Client;
+import junit.framework.TestCase;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.objis.spring.dao.EmployeDao;
-import com.objis.spring.domaine.Employe;
-import com.proxibanquev4trio.domaine.Client;
-
-import junit.framework.TestCase;
+import java.util.List;
 
 /**
  * Created by Stagiaire on 05/10/2016.
@@ -34,8 +30,7 @@ public class AppTest extends TestCase {
     	
     	Long id = 1L;
     	List<Client> liste;
-    	
-    	liste=dao.getClientById(id);
+//    	liste=dao.getClientById(id);
     	
     	
     	

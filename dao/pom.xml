@@ -24,11 +24,10 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency> 
-        <groupId>${project.groupId}</groupId>
-        <artifactId>proxibanquev4trio-domaine</artifactId>
-        <version>${project.version}</version>
-        
+        <dependency>
+            <groupId>com.proxibanquev4trio</groupId>
+            <artifactId>proxibanquev4trio-domaine</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
