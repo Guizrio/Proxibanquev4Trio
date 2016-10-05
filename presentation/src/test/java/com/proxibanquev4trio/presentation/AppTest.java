@@ -1,4 +1,4 @@
-package com.proxibanquev4trio;
+package com.proxibanquev4trio.presentation;
 
 import org.junit.Test;
 

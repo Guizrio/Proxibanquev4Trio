@@ -1,4 +1,4 @@
-package com.proxibanquev4trio;
+package com.proxibanquev4trio.presentation;
 
 /**
  * Created by Stagiaire on 05/10/2016.

@@ -1,4 +1,4 @@
-package com.proxibanquev4trio;
+package com.proxibanquev4trio.webservices;
 
 import org.junit.Test;
 

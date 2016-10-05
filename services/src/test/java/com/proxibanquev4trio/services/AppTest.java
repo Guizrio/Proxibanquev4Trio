@@ -1,4 +1,4 @@
-package com.proxibanquev4trio;
+package com.proxibanquev4trio.services;
 
 import org.junit.Test;
 
@@ -6,7 +6,6 @@ import org.junit.Test;
  * Created by Stagiaire on 05/10/2016.
  */
 public class AppTest {
-
     @Test
     public void main() throws Exception {
 
