@@ -10,10 +10,10 @@
 
 	<modules>
 		<module>domaine</module>
-		<module>presentation</module>
 		<module>services</module>
 		<module>dao</module>
 		<module>webservices</module>
+		<module>presentation</module>
 	</modules>
 
 	<packaging>pom</packaging>
