@@ -24,6 +24,7 @@
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 
+
 			<property name="packagesToScan" value="com" />
 
 		</properties>

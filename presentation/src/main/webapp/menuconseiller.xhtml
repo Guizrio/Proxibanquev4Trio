@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Proxibanque V3 du Trio</title>
+</head>
+
+<h:body>
+
+    <!-- déclaration du template dont la page est cliente -->
+    <ui:composition template="/template/layout.xhtml">
+
+        <!-- 	Redéfinission de la zone 'content' du layout -->
+        <ui:define name="content">
+            <f:view>
+
+                <h:form id="login-form">
+                    <p:panel header="Bonjour #{loginBean.conseiller.prenom} #{loginBean.conseiller.nom}"
+                             style="margin-bottom:10px;">
+                        
+                        <p:spacer height="2"/>
+                        <p:commandLink update=":login-form:form:clientCreateDetail"
+                                       oncomplete="PF('clientCreateDialog').show()"
+                                       title="Créer un client">
+
+                            <h:outputText value="Créer un client" style="margin:0 auto;"/>
+                            <f:setPropertyActionListener value="#{menuConseillerBean.clientToCreate}"
+                                                         target="#{menuConseillerBean.clientToCreate}"/>
+                        </p:commandLink>
+                        <p:separator/>
+                        <p:spacer height="2"/>
+
+                        <h:form id="form">
+                            <p:dataGrid var="client" value="#{menuConseillerBean.clients}" columns="3" layout="grid"
+                                        rows="12" paginator="true" id="clients"
+                                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                        rowsPerPageTemplate="6,12,16">
+
+                                <f:facet name="header">
+                                    Vous pouvez voir votre liste des clients ici
+                                </f:facet>
+
+                                <p:panel header="#{client.id}" style="text-align:center">
+                                    <h:panelGrid columns="1" style="width:100%">
+                                        <h:graphicImage library="images" name="thomasT.jpg"/>
+
+                                        <h:outputText value="#{client.prenom} #{client.nom}"/>
+                                        <h:outputText value="id = #{client.id}"/>
+
+
+                                        <p:separator/>
+
+
+                                        <p:commandLink update=":login-form:form:clientDetail"
+                                                       oncomplete="PF('clientDialog').show()"
+                                                       title="Détail des clients">
+                                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;"/>
+                                            <f:setPropertyActionListener value="#{client}"
+                                                                         target="#{menuConseillerBean.selectedClient}"/>
+                                        </p:commandLink>
+
+                                        <p:spacer height="1"/>
+
+                                        <p:commandLink update=":login-form:form:compteDetail"
+                                                       oncomplete="PF('compteDialog').show()"
+                                                       title="Détail des comptes">
+                                            <h:outputText value="Voir les comptes" style="margin:0 auto;"/>
+                                            <f:setPropertyActionListener value="#{client}"
+                                                                         target="#{menuConseillerBean.selectedClient}"/>
+                                        </p:commandLink>
+
+
+                                    </h:panelGrid>
+                                </p:panel>
+
+                            </p:dataGrid>
+
+                            <p:dialog header="Client Infos" widgetVar="clientDialog" modal="true" showEffect="fade"
+                                      hideEffect="fade" resizable="false">
+                                <p:outputPanel id="clientDetail" style="text-align:center;">
+                                    <p:panelGrid columns="2" rendered="#{not empty menuConseillerBean.selectedClient}"
+                                                 columnClasses="label,value">
+                                        <f:facet name="header">
+                                            <h:graphicImage library="images" name="thomasT.jpg"/>
+                                        </f:facet>
+
+                                        <h:outputLabel for="prenom" value="Prenom:"/>
+                                        <p:inplace id="prenom" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.prenom}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="nom" value="Nom:"/>
+                                        <p:inplace id="nom" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.nom}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+
+                                        <h:outputLabel for="telephone" value="Telephone:"/>
+                                        <p:inplace id="telephone" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.telephone}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+
+                                        <h:outputLabel for="codePostal" value="Code Postal:"/>
+                                        <p:inplace id="codePostal" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.codePostal}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="ville" value="Ville:"/>
+                                        <p:inplace id="ville" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.ville}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                    </p:panelGrid>
+
+                                    <p:spacer height="5"/>
+                                    <p:separator/>
+                                    <p>Cliquez sur le champ à modifier (hors Id)</p>
+                                    <p:separator/>
+                                    <p:spacer height="30"/>
+
+                                    <p:commandButton value="Modifier client"
+                                                     action="#{menuConseillerBean.doSaveTheQueen}"/>
+
+                                </p:outputPanel>
+                            </p:dialog>
+
+
+                            <p:dialog header="Comptes Infos" widgetVar="compteDialog" modal="true" showEffect="fade"
+                                      hideEffect="fade" resizable="false">
+                                <p:outputPanel id="compteDetail" style="text-align:center;">
+
+                                    <p:panelGrid columns="1" rendered="#{not empty menuConseillerBean.selectedClient}"
+                                                 columnClasses="label,value">
+                                        <f:facet name="header">
+                                            <h:graphicImage library="images" name="thomasT.jpg"/>
+                                        </f:facet>
+
+                                    </p:panelGrid>
+                                </p:outputPanel>
+                            </p:dialog>
+
+
+
+                            <p:dialog header="Création de client" widgetVar="clientCreateDialog" modal="true" showEffect="fade"
+                                      hideEffect="fade" resizable="false">
+                                <p:outputPanel id="clientCreateDetail" style="text-align:center;">
+                                    <p:panelGrid columns="2"
+                                                 columnClasses="label,value">
+                                        <f:facet name="header">
+                                            <h:graphicImage library="images" name="thomasT.jpg"/>
+                                        </f:facet>
+
+                                        <h:outputLabel for="createprenom" value="Prenom:"/>
+                                        <p:inplace id="createprenom" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.prenom}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="createnom" value="Nom:"/>
+                                        <p:inplace id="createnom" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.nom}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+
+
+
+                                        <h:outputLabel for="createcodePostal" value="Code Postal:"/>
+                                        <p:inplace id="createcodePostal" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.codePostal}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                        <h:outputLabel for="createville" value="Ville:"/>
+                                        <p:inplace id="createville" editor="true">
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.ville}"
+                                                         required="true" label="text"/>
+                                        </p:inplace>
+
+                                    </p:panelGrid>
+
+                                    <p:spacer height="5"/>
+                                    <p:separator/>
+                                    <p>Vous pouvez modifier les champs en cliquant dessus</p>
+                                    <p:separator/>
+                                    <p:spacer height="30"/>
+
+                                    <p:commandButton value="Modifier client"
+                                                     action="#{menuConseillerBean.doSaveNewQueen}"/>
+
+                                </p:outputPanel>
+                            </p:dialog>
+
+                        </h:form>
+
+                    </p:panel>
+                </h:form>
+
+
+            </f:view>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+
+</html>
