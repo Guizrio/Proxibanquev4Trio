@@ -1,5 +1,6 @@
 package com.proxibanquev4trio.domaine;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,7 +33,7 @@ public abstract class Humain {
 	protected String nom;
 	protected String telephone;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.PERSIST)
 	protected Adresse adresse;
 
 	// Getters Setters

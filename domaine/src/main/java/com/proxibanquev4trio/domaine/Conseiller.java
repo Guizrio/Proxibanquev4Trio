@@ -2,6 +2,7 @@ package com.proxibanquev4trio.domaine;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -18,7 +19,7 @@ public class Conseiller  extends Humain{
   protected String login;
   protected String pwd;
   
-  @OneToMany(fetch=FetchType.EAGER)
+  @OneToMany(fetch=FetchType.EAGER , mappedBy="conseiller", cascade=CascadeType.PERSIST)
   protected List<Client> clients;
 
   /**
