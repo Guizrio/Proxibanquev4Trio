@@ -13,9 +13,9 @@ import java.util.List;
 public class AppTest extends TestCase {
 	
 	private Client client;
-	private ClientDao dao;
-	private ClassPathXmlApplicationContext appContext;
 	
+	private ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("spring-data.xml");
+	private ClientDao dao=(ClientDao) appContext.getBean("clientDao");
 	
 	
 	
@@ -26,10 +26,7 @@ public class AppTest extends TestCase {
 		client.setEmail("fabricelavelle@wanadoo.fr");
 		client.setPrenom("Fabrice");
 		client.setTelephone("01.25.48.69.28");
-		
-		appContext = new ClassPathXmlApplicationContext("spring-data.xml");
-
-		dao = (ClientDao) appContext.getBean("ClientDao");
+	
 		dao.save(client);
 	}
 	
@@ -44,8 +41,9 @@ public class AppTest extends TestCase {
     	
     	Long id = 1L;
     	List<Client> liste;
-  	 liste=dao.findClientById(id);
+  	 
     	
+    	liste=dao.findById(id);	
   	 System.out.println(liste.get(0).getNom());
    
     	

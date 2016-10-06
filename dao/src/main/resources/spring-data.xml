@@ -15,6 +15,7 @@
 	<!-- Etape 0 : Configuration Annotations -->
 
 	<context:annotation-config />
+	<context:component-scan base-package="com.proxibanquev4trio.dao"/>
 
 	<!-- Etape 1 : Base de donnees = PPC + dataSource-->
 	<bean
@@ -39,13 +40,7 @@
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.proxibanquev4trio.domaine" />
-		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="database" value="MYSQL" />
-				<property name="generateDdl" value="true" />
-			</bean>
-		</property>
+		<property name="persistenceUnitName" value="myUnit" />
 	</bean>
 
 		<!-- Etape 3 : TransactionManager -->

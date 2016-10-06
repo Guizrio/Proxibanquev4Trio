@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>proxibanquev4trio-domaine</artifactId>
-
+    
     <name>proxibanquev4trio-domaine</name>
     <url>http://maven.apache.org</url>
     <dependencies>

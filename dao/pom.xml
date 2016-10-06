@@ -25,9 +25,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.proxibanquev4trio</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>proxibanquev4trio-domaine</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
+        
     </dependencies>
 </project>
