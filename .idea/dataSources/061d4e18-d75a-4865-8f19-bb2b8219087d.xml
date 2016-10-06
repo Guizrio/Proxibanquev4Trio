@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - logindb@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="logindb">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="dao_exemple"/>
+    <schema id="3" name="demojpa"/>
+    <schema id="4" name="formation"/>
+    <schema id="5" name="information_schema"/>
+    <schema id="6" name="mysql"/>
+    <schema id="7" name="performance_schema"/>
+    <schema id="8" name="proxibanque"/>
+    <schema id="9" name="proxibanqueguifabv2"/>
+    <schema id="10" name="proxibanquev3trio"/>
+    <schema id="11" name="proxibanquev4trio"/>
+    <schema id="12" name="sys"/>
+    <table id="13" parent="1" name="roles"/>
+    <table id="14" parent="1" name="users"/>
+    <column id="15" parent="13" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="16" parent="13" name="role">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="17" parent="14" name="name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="18" parent="14" name="password">
+      <data-type>varchar(1023)|0</data-type>
+    </column>
+  </database-model>
+</dataSource>
