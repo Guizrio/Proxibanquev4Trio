@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ClientDao extends JpaRepository<Client, Integer> {
 	
-	public List<Client> getClientById(Long id);
+	public List<Client> findClientById(Long id);
 
 }

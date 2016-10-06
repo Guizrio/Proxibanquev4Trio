@@ -18,23 +18,36 @@ public class AppTest extends TestCase {
 	
 	
 	
-    @Test
-    public void main() throws Exception {
+	
+	public void testSaveEmploye() {
+		
+		client = new Client();
+		client.setNom("LAVELLE");
+		client.setEmail("fabricelavelle@wanadoo.fr");
+		client.setPrenom("Fabrice");
+		client.setTelephone("01.25.48.69.28");
+		
+		appContext = new ClassPathXmlApplicationContext("spring-data.xml");
 
-    }
+		dao = (ClientDao) appContext.getBean("ClientDao");
+		dao.save(client);
+	}
+	
+	
+	
+   
     
     @Test 
-    public void testGetClientById(){
+    public void testFindClientById(){
 		
     	
     	
     	Long id = 1L;
     	List<Client> liste;
-//    	liste=dao.getClientById(id);
+  	 liste=dao.findClientById(id);
     	
-    	
-    	
-    	
+  	 System.out.println(liste.get(0).getNom());
+   
     	
     }
 
