@@ -19,7 +19,7 @@ public class AppTest extends TestCase {
 	private Client client;
 	private Conseiller conseiller;
 	
-	private ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("spring-data.xml");
+	private ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("spring-dao.xml");
 	private ClientDao daoClient=(ClientDao) appContext.getBean("clientDao");
 	private IConseillerDao daoConseiller=(IConseillerDao) appContext.getBean(IConseillerDao.class);
 	

@@ -10,6 +10,12 @@
           <element id="archive" name="proxibanquev4trio-domaine-0.0.1-SNAPSHOT.jar">
             <element id="module-output" name="domaine" />
           </element>
+          <element id="archive" name="proxibanquev4trio-service-0.0.1-SNAPSHOT.jar">
+            <element id="module-output" name="services" />
+          </element>
+          <element id="archive" name="proxibanquev4trio-dao-0.0.1-SNAPSHOT.jar">
+            <element id="module-output" name="dao" />
+          </element>
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:1.4.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:1.4.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:1.4.1.RELEASE" />

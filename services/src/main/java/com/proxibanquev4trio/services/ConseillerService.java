@@ -1,19 +1,16 @@
 package com.proxibanquev4trio.services;
 
-import javax.inject.Inject;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
-
 import com.proxibanquev4trio.dao.IConseillerDao;
 import com.proxibanquev4trio.domaine.Conseiller;
+import org.springframework.stereotype.Component;
+
+import javax.inject.Inject;
 
 @Component
 public class ConseillerService implements IConseillerService {
 	
 	
-	@Autowired
+	@Inject
 	private IConseillerDao conseillerDao;
 	
 	

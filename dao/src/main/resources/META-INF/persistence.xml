@@ -9,12 +9,9 @@
 		<class>com.proxibanquev4trio.domaine.CompteCourant</class>
 		<class>com.proxibanquev4trio.domaine.CompteEpargne</class>
 		<class>com.proxibanquev4trio.domaine.Conseiller</class>
-		<class>com.proxibanquev4trio.domaine.Directeur</class>
-		<class>com.proxibanquev4trio.domaine.Personne</class>
-		<class>com.proxibanquev4trio.domaine.Users</class>
 		<class>com.proxibanquev4trio.domaine.Adresse</class>
 
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<properties>
 
@@ -23,7 +20,6 @@
 			<property name="hibernate.show_sql" value="true" />
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-
 
 			<property name="packagesToScan" value="com" />
 
