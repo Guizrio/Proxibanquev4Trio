@@ -11,8 +11,8 @@ import java.io.IOException;
  */
 public class LoginFilter implements Filter {
 
-    @Inject
-    LoginBean loginBean;
+//    @Inject
+//    LoginBean loginBean;
 
     /**
      * On vérifie ici que l'utilisateur est loggué, s'il ne l'est pas ou plus, on redirige vers la page de login.

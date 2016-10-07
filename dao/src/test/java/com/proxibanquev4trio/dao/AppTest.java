@@ -73,7 +73,7 @@ public class AppTest extends TestCase {
     @Test 
     public void testFindClientById(){
 		
-    	Long id = 2L;
+    	long id =3L  ;
     	List<Client> liste;
   	 
     	liste=daoClient.findById(id);	

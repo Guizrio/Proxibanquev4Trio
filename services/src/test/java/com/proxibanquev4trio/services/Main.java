@@ -23,7 +23,7 @@ public class Main {
     	
     	Conseiller conseiller = new Conseiller();
     	
-    	conseiller=service.Authentification("login1", "pwd1");
+    	conseiller=service.Authentification("login1");
     	
     	System.out.println(conseiller.getNom());
 

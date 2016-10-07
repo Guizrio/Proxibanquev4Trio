@@ -5,13 +5,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.proxibanquev4trio.domaine.Conseiller;
+import com.proxibanquev4trio.services.IConseillerService;
 
-
-
-import javassist.expr.Instanceof;
 
 import java.io.Serializable;
 
@@ -31,24 +33,31 @@ public class LoginBean implements Serializable {
 	private boolean loggedIn;
 
 	// @Inject
-	// private AuthService authService;
-	// private ConseillerService conseillerService;
+	private IUser user;
+
 	private Conseiller conseiller;
 
 	public LoginBean() {
 		loggedIn = false;
 		// authService = new AuthService();
 		// conseillerService = new ConseillerService();
-		conseiller = null;
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		
+		String login = request.getUserPrincipal().getName();
+		
+		ApplicationContext context= new ClassPathXmlApplicationContext("spring-presentation.xml");
+		user =(IUser) context.getBean(IUser.class);
+		conseiller = user.findByLogin(login);
 	}
 
 	public boolean isGerant() {
-		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		request.getUserPrincipal();
-		if (request.isUserInRole("admin")) {
-			return false;
-		} else {
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		if (request.isUserInRole("Gerant")) {
 			return true;
+		} else {
+			return false;
 		}
 
 	}
@@ -71,31 +80,31 @@ public class LoginBean implements Serializable {
 		// !", "MESSAGE D'ERREUR");
 		// msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 		// FacesContext.getCurrentInstance().addMessage(null, msg);
-//	}
-//
-//	}catch(
-//
-//	DAOException e)
-//	{
-//
-//            e.printStackTrace();
-//            loggedIn = false;
-//            conseiller = null;
-//
-//           ;
-//
-//        }
-		return"plouf";
+		// }
+		//
+		// }catch(
+		//
+		// DAOException e)
+		// {
+		//
+		// e.printStackTrace();
+		// loggedIn = false;
+		// conseiller = null;
+		//
+		// ;
+		//
+		// }
+		return "plouf";
 	}
 
 	public String disconnect() {
-//		loggedIn = false;
-//		password = null;
-//		login = null;
-//
-//		conseiller = null;
-//
-	return "plouf";
+		// loggedIn = false;
+		// password = null;
+		// login = null;
+		//
+		// conseiller = null;
+		//
+		return "plouf";
 	}
 
 	public String getLogin() {

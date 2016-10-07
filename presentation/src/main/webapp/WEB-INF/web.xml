@@ -56,7 +56,7 @@
       <url-pattern>/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
-      <role-name>admin</role-name>
+      <role-name>Conseiller</role-name>
     </auth-constraint>
   </security-constraint>
 
@@ -68,9 +68,10 @@
       <form-error-page>/erreurLogin.xhtml</form-error-page>
     </form-login-config>
   </login-config>
+  
   <security-role>
-    <description>Administrateur</description>
-    <role-name>admin</role-name>
+    <description>Conseiller</description>
+    <role-name>Conseiller</role-name>
   </security-role>
 
 

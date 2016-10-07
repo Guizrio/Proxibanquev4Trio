@@ -4,7 +4,7 @@ import com.proxibanquev4trio.domaine.Conseiller;
 
 public interface IConseillerService {
 
-	Conseiller Authentification(String login, String pwd);
+	Conseiller Authentification(String login);
 	
 	
 

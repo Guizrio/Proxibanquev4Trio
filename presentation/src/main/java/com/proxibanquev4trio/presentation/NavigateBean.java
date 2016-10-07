@@ -17,9 +17,9 @@ public class NavigateBean implements Serializable{
 
     private static final long serialVersionUID = 2L;
 
-    @ManagedProperty(value="#{errorBean}")
-    @Inject
-    private ErrorBean errorBean;
+//    @ManagedProperty(value="#{errorBean}")
+//    @Inject
+//    private ErrorBean errorBean;
 
     public NavigateBean() {
     }

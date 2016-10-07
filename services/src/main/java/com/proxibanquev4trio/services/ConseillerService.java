@@ -31,17 +31,13 @@ public class ConseillerService implements IConseillerService {
 	
 
 	
-	public Conseiller Authentification(String login, String pwd){
+	public Conseiller Authentification(String login){
 		
 		Conseiller conseiller=null;
 		
 		conseiller=this.conseillerDao.findByLogin(login).get(0);
-		
-		if(login.equals(conseiller.getLogin()) && pwd.equals(conseiller.getPwd())){
+
 		return conseiller;
-		}else{
-			return null;
-		}
 		
 		
 		
