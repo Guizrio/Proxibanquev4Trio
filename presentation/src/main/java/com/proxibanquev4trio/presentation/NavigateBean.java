@@ -1,9 +1,7 @@
 package com.proxibanquev4trio.presentation;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 
@@ -100,7 +98,7 @@ public class NavigateBean implements Serializable{
 //            return "/secured_pages/error.xhtml?faces-redirect=true";
 //        }
 
-        errorBean.setMessage(messagePerso);
+//        errorBean.setMessage(messagePerso);
         return "/secured_pages/error.xhtml?faces-redirect=true";
 
     }
@@ -124,17 +122,17 @@ public class NavigateBean implements Serializable{
 //            return "/secured_pages/error.xhtml";
 //        }
 
-        errorBean.setMessage(messagePerso);
+//        errorBean.setMessage(messagePerso);
         return "/secured_pages/error.xhtml";
 
     }
 
 
-    public ErrorBean getErrorBean() {
-        return errorBean;
-    }
-
-    public void setErrorBean(ErrorBean errorBean) {
-        this.errorBean = errorBean;
-    }
+//    public ErrorBean getErrorBean() {
+//        return errorBean;
+//    }
+//
+//    public void setErrorBean(ErrorBean errorBean) {
+//        this.errorBean = errorBean;
+//    }
 }
