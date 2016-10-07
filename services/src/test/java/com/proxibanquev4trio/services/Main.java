@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.proxibanquev4trio.domaine.Conseiller;
@@ -17,16 +18,14 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		ApplicationContext context= new AnnotationConfigApplicationContext(Main.class);
+		ApplicationContext context= new ClassPathXmlApplicationContext("spring-service.xml");
 		IConseillerService service =context.getBean(IConseillerService.class);
-		
-		
-		service.test();
-        
-		
-		//Conseiller conseiller = new Conseiller();
-		//conseiller=service.Authentification("login1", "pwd1");
-    	//System.out.println(conseiller.getNom());
+    	
+    	Conseiller conseiller = new Conseiller();
+    	
+    	conseiller=service.Authentification("login1", "pwd1");
+    	
+    	System.out.println(conseiller.getNom());
 
 	}
 

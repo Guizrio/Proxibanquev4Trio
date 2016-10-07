@@ -10,6 +10,10 @@
 		<class>com.proxibanquev4trio.domaine.CompteEpargne</class>
 		<class>com.proxibanquev4trio.domaine.Conseiller</class>
 		<class>com.proxibanquev4trio.domaine.Adresse</class>
+		<class>com.proxibanquev4trio.domaine.Gerant</class>
+		<class>com.proxibanquev4trio.domaine.User</class>
+		<class>com.proxibanquev4trio.domaine.Humain</class>
+		
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 

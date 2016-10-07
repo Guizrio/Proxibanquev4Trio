@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
@@ -15,12 +16,14 @@ import javax.persistence.OneToMany;
  *
  */
 @Entity
-public class Conseiller  extends Humain{
-  protected String login;
-  protected String pwd;
+public class Conseiller  extends User{
+  
   
   @OneToMany(fetch=FetchType.EAGER , mappedBy="conseiller", cascade=CascadeType.PERSIST)
   protected List<Client> clients;
+  
+  @ManyToOne(cascade=CascadeType.PERSIST)
+  protected Gerant gerant;
 
   /**
    * Constructeur de la classe Conseiller avec comme paramètres :
@@ -33,28 +36,10 @@ public class Conseiller  extends Humain{
    * @param telephone :
    *                  le téléphone de l'humain : String,
    */
-  public Conseiller(Long id, String firstname, String lastname, Adresse adresse, String telephone) {
-    super(id, firstname, lastname, adresse, telephone);
-  }
+ 
 
   public Conseiller() {
     super();
-  }
-
-  public String getLogin() {
-    return login;
-  }
-
-  public void setLogin(String login) {
-    this.login = login;
-  }
-
-  public String getPwd() {
-    return pwd;
-  }
-
-  public void setPwd(String pwd) {
-    this.pwd = pwd;
   }
 
   public List<Client> getClients() {
@@ -64,4 +49,13 @@ public class Conseiller  extends Humain{
   public void setClients(List<Client> class1) {
     this.clients = class1;
   }
+
+public Gerant getGerant() {
+	return gerant;
+}
+
+public void setGerant(Gerant gerant) {
+	this.gerant = gerant;
+}
+  
 }

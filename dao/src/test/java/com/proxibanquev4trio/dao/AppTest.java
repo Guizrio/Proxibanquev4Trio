@@ -3,6 +3,7 @@ package com.proxibanquev4trio.dao;
 import com.proxibanquev4trio.domaine.Adresse;
 import com.proxibanquev4trio.domaine.Client;
 import com.proxibanquev4trio.domaine.Conseiller;
+import com.proxibanquev4trio.domaine.Gerant;
 
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -18,10 +19,12 @@ public class AppTest extends TestCase {
 	
 	private Client client;
 	private Conseiller conseiller;
+	private Gerant gerant;
 	
 	private ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("spring-dao.xml");
-	private ClientDao daoClient=(ClientDao) appContext.getBean("clientDao");
+	private ClientDao daoClient=(ClientDao) appContext.getBean(ClientDao.class);
 	private IConseillerDao daoConseiller=(IConseillerDao) appContext.getBean(IConseillerDao.class);
+	private IGerantDao daoGerant=(IGerantDao) appContext.getBean(IGerantDao.class);
 	
 	
 	
@@ -47,13 +50,22 @@ public class AppTest extends TestCase {
     	conseiller.setPwd("pwd1");
     	conseiller.setTelephone("04.58.96.27.64");
     	conseiller.setLogin("login1");
+    	conseiller.setRole("conseiller");
     	List<Client> liste=new ArrayList<Client>();
     	liste.add(client);
     	conseiller.setClients(liste);
     	client.setConseiller(conseiller);
     	
+    	gerant =new Gerant();
+    	gerant.setNom("Vincent");
+    	gerant.setRole("gerant");
+    	List<Conseiller> liste2= new ArrayList<Conseiller>();
+    	liste2.add(conseiller);
+    	gerant.setConseillers(liste2);
+    	conseiller.setGerant(gerant);
     	
-    	daoConseiller.save(conseiller);
+    	daoGerant.save(gerant);
+    	
 	
 		
 	}

@@ -28,16 +28,6 @@ public class AppTest {
     	System.out.println(conseiller.getNom());
     }
     
-    @Test
-    public void test(){
-    	
-
-		ApplicationContext context= new ClassPathXmlApplicationContext("spring-service.xml");
-		IConseillerService service =context.getBean(IConseillerService.class);
-		
-		
-		service.test();
-    	
-    }
+   
 
 }

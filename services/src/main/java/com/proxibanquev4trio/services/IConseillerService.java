@@ -6,6 +6,6 @@ public interface IConseillerService {
 
 	Conseiller Authentification(String login, String pwd);
 	
-	void test();
+	
 
 }

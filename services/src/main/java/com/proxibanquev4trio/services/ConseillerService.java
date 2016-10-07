@@ -47,10 +47,6 @@ public class ConseillerService implements IConseillerService {
 		
 	}
 	
-	public void test(){
-		
-		System.out.println("test");
-	}
 
 
 

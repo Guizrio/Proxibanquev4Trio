@@ -8,8 +8,8 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 import com.proxibanquev4trio.domaine.Conseiller;
-import com.proxibanquev4trio.domaine.Gerant;
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+
+
 
 import javassist.expr.Instanceof;
 
