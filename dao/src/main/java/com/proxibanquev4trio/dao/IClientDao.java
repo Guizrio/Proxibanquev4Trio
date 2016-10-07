@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ClientDao extends JpaRepository<Client, Integer> {
+public interface IClientDao extends JpaRepository<Client, Integer> {
 	
 	public List<Client> findById(Long id);
 

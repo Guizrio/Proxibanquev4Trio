@@ -22,7 +22,7 @@ public class AppTest extends TestCase {
 	private Gerant gerant;
 	
 	private ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("spring-dao.xml");
-	private ClientDao daoClient=(ClientDao) appContext.getBean(ClientDao.class);
+	private IClientDao daoClient=(IClientDao) appContext.getBean(IClientDao.class);
 	private IConseillerDao daoConseiller=(IConseillerDao) appContext.getBean(IConseillerDao.class);
 	private IGerantDao daoGerant=(IGerantDao) appContext.getBean(IGerantDao.class);
 	
@@ -92,5 +92,20 @@ public class AppTest extends TestCase {
     	System.out.println(liste.get(0).getClients().get(0).getNom());
     }
     
+    @Test
+    public void testUpdateClient(){
+    	
+    	
+    	Client client =daoClient.findById(3L).get(0);
+    	client.setNom("Dubois");
+    	daoClient.save(client);
+    	client=daoClient.findById(3L).get(0);
+    	
+        System.out.println(client.getNom());
+    	
+    	
+    	
+    	
+    }
 
 }

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -36,11 +37,8 @@ public class Client{
 	
   private String email;
   
-  @OneToOne
-  protected CompteCourant comptecourant;
-  
-  @OneToOne
-  protected CompteEpargne compteepargne;
+  @OneToMany
+  protected List<Compte> listeCompte;
   
   @ManyToOne(cascade=CascadeType.PERSIST)
   private Conseiller conseiller;
@@ -66,21 +64,7 @@ public class Client{
     this.email = email;
   }
 
-public CompteCourant getComptecourant() {
-	return comptecourant;
-}
 
-public void setComptecourant(CompteCourant comptecourant) {
-	this.comptecourant = comptecourant;
-}
-
-public CompteEpargne getCompteepargne() {
-	return compteepargne;
-}
-
-public void setCompteepargne(CompteEpargne compteepargne) {
-	this.compteepargne = compteepargne;
-}
 
 public Conseiller getConseiller() {
 	return conseiller;
@@ -128,6 +112,14 @@ public Adresse getAdresse() {
 
 public void setAdresse(Adresse adresse) {
 	this.adresse = adresse;
+}
+
+public List<Compte> getListeCompte() {
+	return listeCompte;
+}
+
+public void setListeCompte(List<Compte> listeCompte) {
+	this.listeCompte = listeCompte;
 }
 
 
