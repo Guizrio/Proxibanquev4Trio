@@ -9,26 +9,49 @@
 
 <h:body>
 
-
 	<ui:composition>
-        <f:view>
-		<h:form>
-			<p:growl id="messages" />
-			<p:menubar>
-				<f:facet name="options">
-					<p:commandButton value="Retour menu principal" action="#{navigateBean.redirectToMenuConseiller}"/>
-				</f:facet>
-				
-				<f:facet name="options">
-					<p:commandButton value="Faire un virement" action="#{navigateBean.redirectToVirement()}"/>
-				</f:facet>
+		<f:view>
+			<h:form>
+				<p:growl id="messages" />
+				<p:menubar>
+					<f:facet name="options">
+						<p:commandButton value="liste conseiller" rendered="#{loginBean.gerant}"
+							action="#{navigateBean.redirectToMenuConseiller}" />
+					</f:facet>
 
-				<f:facet name="options">
-					<p:commandButton style="margin-right:10px" action="#{loginBean.disconnect}" value="Logout" icon="ui-icon-extlink" />
-				</f:facet>
-			</p:menubar>
-		</h:form>
-        </f:view>
+					<f:facet name="options">
+						<p:commandButton value="creer conseiller" rendered="#{loginBean.gerant}"
+							action="#{navigateBean.redirectToVirement()}" />
+					</f:facet>
+					
+					<f:facet name="options">
+						<p:commandButton value="liste client"
+							action="#{navigateBean.redirectToMenuConseiller}" />
+					</f:facet>
+					
+					<f:facet name="options">
+						<p:commandButton value="creer client"
+							action="#{navigateBean.redirectToMenuConseiller}" />
+					</f:facet>
+
+					<f:facet name="options">
+						<p:commandButton value="Faire un virement"
+							action="#{navigateBean.redirectToVirement()}" />
+					</f:facet>
+
+					<f:facet name="options">
+						<p:commandButton value="alertes decouvert"
+							action="#{navigateBean.redirectToVirement()}" />
+					</f:facet>
+
+					<f:facet name="options">
+						<p:commandButton style="margin-right:10px"
+							action="#{loginBean.disconnect}" value="Logout"
+							icon="ui-icon-extlink" />
+					</f:facet>
+				</p:menubar>
+			</h:form>
+		</f:view>
 	</ui:composition>
 
 

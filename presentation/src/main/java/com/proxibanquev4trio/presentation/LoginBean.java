@@ -1,126 +1,132 @@
 package com.proxibanquev4trio.presentation;
 
-import com.proxibanquev4trio.domaine.Conseiller;
-
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+
+import com.proxibanquev4trio.domaine.Conseiller;
+import com.proxibanquev4trio.domaine.Gerant;
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
+
+import javassist.expr.Instanceof;
+
 import java.io.Serializable;
 
 /**
  * Created by Stagiaire on 12/09/2016.
  */
-@ManagedBean(name = "loginBean")        //Sert juste à avoir l'autocomplétion et la recherche incrémentale d'intelliJ dans les pages xhtml (EL interact)
-@Named
+
+@ManagedBean(name = "loginBean")
 @SessionScoped
-public class LoginBean implements Serializable{
+public class LoginBean implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
+	private String login;
+	private String password;
 
-    private String login;
-    private String password;
+	private boolean loggedIn;
 
-    private Conseiller conseiller;
+	// @Inject
+	// private AuthService authService;
+	// private ConseillerService conseillerService;
+	private Conseiller conseiller;
 
-    private boolean loggedIn;
+	public LoginBean() {
+		loggedIn = false;
+		// authService = new AuthService();
+		// conseillerService = new ConseillerService();
+		conseiller = null;
+	}
 
-//    @Inject
-//    private AuthService authService;
+	public boolean isGerant() {
+		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		request.getUserPrincipal();
+		if (request.isUserInRole("admin")) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
+	public String doLogin() {
+
+		// try {
+		// boolean isValidConseiller = authService.authentification(login,
+		// password);
+		//
+		// if(isValidConseiller){
+		// loggedIn = true;
+		// conseiller = conseillerService.lireUnConseiller(login);
+		//
+		// }else{
+		// loggedIn = false;
+		// conseiller = null;
+		//
+		// FacesMessage msg = new FacesMessage("Erreur de login ou de password
+		// !", "MESSAGE D'ERREUR");
+		// msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+		// FacesContext.getCurrentInstance().addMessage(null, msg);
+//	}
 //
-//    @Inject
-//    private ConseillerService conseillerService;
+//	}catch(
+//
+//	DAOException e)
+//	{
+//
+//            e.printStackTrace();
+//            loggedIn = false;
+//            conseiller = null;
+//
+//           ;
+//
+//        }
+		return"plouf";
+	}
 
+	public String disconnect() {
+//		loggedIn = false;
+//		password = null;
+//		login = null;
+//
+//		conseiller = null;
+//
+	return "plouf";
+	}
 
-    @ManagedProperty(value="#{navigateBean}")       //Pareil que plus haut...
-    @Inject
-    private NavigateBean navigateBean;
+	public String getLogin() {
+		return login;
+	}
 
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-    public LoginBean() {
-        loggedIn = false;
-//        authService = new AuthService();
-//        conseillerService = new ConseillerService();
-//        conseiller = null;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public String doLogin(){
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
 
-            boolean isValidConseiller = true; //authService.authentification(login, password);
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
 
-             if(isValidConseiller){
-                 loggedIn = true;
-//                 conseiller = conseillerService.lireUnConseiller(login);
-                 return navigateBean.redirectToMenuConseiller();
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
 
-             }else{
-                 loggedIn = false;
-//                 conseiller = null;
-
-                 FacesMessage msg = new FacesMessage("Erreur de login ou de password !", "MESSAGE D'ERREUR");
-                 msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-                 FacesContext.getCurrentInstance().addMessage(null, msg);
-
-                 return navigateBean.toLogin();     //la redirection n'est pas necessaire si on est déjà sur login (peut etre pas vrai si on est ailleur)
-             }
-
-
-    }
-
-
-    public String disconnect(){
-        loggedIn = false;
-        password = null;
-        login = null;
-
-//        conseiller = null;
-
-        return navigateBean.redirectToLogin();
-    }
-
-
-    public boolean isLoggedIn() {
-        return loggedIn;
-    }
-
-    public void setLoggedIn(boolean loggedIn) {
-        this.loggedIn = loggedIn;
-    }
-
-    public void setNavigateBean(NavigateBean navigateBean) {
-        this.navigateBean = navigateBean;
-    }
-
-    public NavigateBean getNavigateBean(){
-        return navigateBean;
-    }
-
-    public Conseiller getConseiller() {
-        return conseiller;
-    }
-
-    public void setConseiller(Conseiller conseiller) {
-        this.conseiller = conseiller;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
 }

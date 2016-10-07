@@ -7,7 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Gérant extends Conseiller{
+public class Gerant extends Conseiller{
 	
 	@OneToMany(fetch=FetchType.EAGER)
 	  protected List<Conseiller> conseillers;
