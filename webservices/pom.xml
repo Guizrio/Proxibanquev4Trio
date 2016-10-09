@@ -23,6 +23,17 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>proxibanquev4trio-domaine</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>proxibanquev4trio-dao</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>proxibanquev4trio-webservices</finalName>

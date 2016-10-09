@@ -144,6 +144,14 @@
 			<!--<version>1.2</version>-->
 		<!--</dependency>-->
 
+
+	<!-- LogBack dependencies -->
+	<!--<dependency>-->
+		<!--<groupId>ch.qos.logback</groupId>-->
+		<!--<artifactId>logback-classic</artifactId>-->
+		<!--<version>${logback.version}</version>-->
+	<!--</dependency>-->
+
 	</dependencies>
 
     <repositories>
@@ -156,6 +164,13 @@
     </repositories>
 
 	<build>
+		<!--<resources>-->
+			<!--<resource>-->
+				<!--<includes>-->
+					<!--<include>com.proxibanquev4trio.presentation.proxibanque_logging.properties</include>-->
+				<!--</includes>-->
+			<!--</resource>-->
+		<!--</resources>-->
 		<pluginManagement>
 			<plugins>
 				<plugin>

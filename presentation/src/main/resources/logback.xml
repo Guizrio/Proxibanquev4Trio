@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!--Vous pouvez définir ici le dossier de destination des logs pour proxibanque-->
+    <property name="LOG_BASE_FOLDER" value="c:/monUserLog1" />
+    <property name="NB_DAY_ROLLING" value="30"/>
+    <property name="NB_MIN_ROLLING" value="3"/>
+    <!--___________________________________________________________________________-->
+
+
+
+    <property name="LOG_FOLDER" value="${LOG_BASE_FOLDER}/proxibanquev4trio/presentation" />
+    <property name="LOG_DAY_ROLL_OVER_FOLDER" value="${LOG_FOLDER}/day_RollOver"/>
+
+
+    <!--Console Appender-->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %n
+            </Pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+    </appender>
+
+
+
+    <!--Appender for 30 day rollingFile, with DEBUG threshold
+    This means that typically a new file is created every day, but at most 30 days of data are stored (olders files are erased)
+    A maximum capacity has been set to 100GB of data, and a maximum size file has been set (200MB, this means that
+    day files bigger than 200MB is divided into smaller 200 MB parts).
+    -->
+    <appender name="dailyRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+
+        <File>${LOG_DAY_ROLL_OVER_FOLDER}/presentation_${NB_DAY_ROLLING}d_rootLevel.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <FileNamePattern>${LOG_DAY_ROLL_OVER_FOLDER}/presentation_${NB_DAY_ROLLING}d_rootLevel.%d{yyyy-MM-dd}. %i .log</FileNamePattern>
+
+            <maxHistory>${NB_DAY_ROLLING}</maxHistory>
+            <totalSizeCap>100GB</totalSizeCap>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>200MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+        <encoder>
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+        </encoder>
+    </appender>
+
+
+
+    <!--Appender for 3 minutes rollingFile, with DEBUG threshold
+    This means that typically a new file is created every minute, but at most 3 minutes of data are stored (olders files are erased)
+    A maximum capacity has been set to 3GB of data, and a maximum size file has been set (200MB, this means that
+    day files bigger than 200MB is divided into smaller 200 MB parts).
+    -->
+    <appender name="minuteRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <File>${LOG_FOLDER}/minutes_RollOver/presentation_${NB_MIN_ROLLING}m_rootLevel.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <FileNamePattern>${LOG_FOLDER}/minutes_RollOver/presentation_${NB_MIN_ROLLING}m_rootLevel.%d{yyyy-MM-dd__HH-mm}. %i .log</FileNamePattern>
+
+            <!-- On ne garde que les trente dernière minutes d'historique-->
+            <maxHistory>${NB_MIN_ROLLING}</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>200MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+        <encoder>
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</Pattern>
+        </encoder>
+    </appender>
+
+
+
+
+
+    <logger name="com.proxibanquev4trio" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="dailyRollingFileAppender"/>
+        <appender-ref ref="minuteRollingFileAppender"/>
+        <appender-ref ref="consoleAppender" />
+    </logger>
+
+
+    <root>
+        <level value="DEBUG" />
+        <appender-ref ref="consoleAppender" />
+    </root>
+</configuration>
