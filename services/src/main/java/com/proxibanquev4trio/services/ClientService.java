@@ -13,18 +13,14 @@ public class ClientService implements IClientService {
 	@Inject
 	IClientDao clientdao;
 	
-	/* (non-Javadoc)
-	 * @see com.proxibanquev4trio.services.IClientService#updateClient(com.proxibanquev4trio.domaine.Client)
-	 */
+	
 	@Override
 	public void updateClient(Client client){
 		
 		clientdao.save(client);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.proxibanquev4trio.services.IClientService#creerClient(com.proxibanquev4trio.domaine.Client)
-	 */
+	
 	@Override
 	public void creerClient(Client client){
 		

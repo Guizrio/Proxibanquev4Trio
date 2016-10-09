@@ -4,6 +4,9 @@ import com.proxibanquev4trio.dao.IConseillerDao;
 import com.proxibanquev4trio.domaine.Conseiller;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 @Component
@@ -39,8 +42,27 @@ public class ConseillerService implements IConseillerService {
 
 		return conseiller;
 		
+	}
+	
+	public List<Conseiller> getAllConseiller(){
+		
+		List<Conseiller> liste;
+		
+		liste=conseillerDao.findAll();
+		
+		return liste;
 		
 		
+	}
+
+
+	public IConseillerDao getConseillerDao() {
+		return conseillerDao;
+	}
+
+
+	public void setConseillerDao(IConseillerDao conseillerDao) {
+		this.conseillerDao = conseillerDao;
 	}
 	
 
