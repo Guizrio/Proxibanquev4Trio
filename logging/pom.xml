@@ -5,12 +5,13 @@
         <groupId>com.proxibanquev4trio</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>proxibanquev4trio-service</artifactId>
+    <artifactId>proxibanquev4trio-logging</artifactId>
     <packaging>jar</packaging>
 
-    <name>proxibanquev4trio-service</name>
+    <name>com.proxibanquev4trio-logging</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -18,29 +19,10 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>proxibanquev4trio-domaine</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>proxibanquev4trio-dao</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>proxibanquev4trio-logging</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

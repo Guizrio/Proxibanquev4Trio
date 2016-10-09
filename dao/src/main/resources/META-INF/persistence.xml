@@ -12,6 +12,7 @@
 		<class>com.proxibanquev4trio.domaine.Adresse</class>
 		<class>com.proxibanquev4trio.domaine.Gerant</class>
 		<class>com.proxibanquev4trio.domaine.User</class>
+		<class>com.proxibanquev4trio.domaine.Virement</class>
 		
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -24,7 +25,7 @@
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 
-			<property name="packagesToScan" value="com" />
+			<property name="packagesToScan" value="com.proxibanquev4trio.domaine" />
 
 		</properties>
 

@@ -21,206 +21,225 @@
     <table id="16" parent="1" name="client_compte"/>
     <table id="17" parent="1" name="compte"/>
     <table id="18" parent="1" name="user"/>
-    <column id="19" parent="13" name="Id">
+    <table id="19" parent="1" name="virement"/>
+    <column id="20" parent="13" name="Id">
       <mandatory>1</mandatory>
       <data-type>bigint(20)|0</data-type>
     </column>
-    <column id="20" parent="13" name="codePostal">
+    <column id="21" parent="13" name="codePostal">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="21" parent="13" name="nomDeRue">
+    <column id="22" parent="13" name="nomDeRue">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="22" parent="13" name="numeroDeRue">
+    <column id="23" parent="13" name="numeroDeRue">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="23" parent="13" name="typeDeRue">
+    <column id="24" parent="13" name="typeDeRue">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="24" parent="13" name="ville">
+    <column id="25" parent="13" name="ville">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <key id="25" parent="13" name="PRIMARY">
+    <key id="26" parent="13" name="PRIMARY">
       <columns>Id</columns>
       <primary>1</primary>
     </key>
-    <column id="26" parent="14" name="id">
+    <column id="27" parent="14" name="id">
       <mandatory>1</mandatory>
       <data-type>bigint(20)|0</data-type>
     </column>
-    <column id="27" parent="14" name="email">
+    <column id="28" parent="14" name="email">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="28" parent="14" name="nom">
+    <column id="29" parent="14" name="nom">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="29" parent="14" name="prenom">
+    <column id="30" parent="14" name="prenom">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="30" parent="14" name="telephone">
+    <column id="31" parent="14" name="telephone">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="31" parent="14" name="adresse_Id">
+    <column id="32" parent="14" name="adresse_Id">
       <data-type>bigint(20)|0</data-type>
     </column>
-    <column id="32" parent="14" name="conseiller_id">
+    <column id="33" parent="14" name="conseiller_id">
       <data-type>bigint(20)|0</data-type>
     </column>
-    <index id="33" parent="14" name="FKl2osx290ndgap6h5hpl6kt455">
+    <index id="34" parent="14" name="FKl2osx290ndgap6h5hpl6kt455">
       <columns>adresse_Id</columns>
       <desc-columns></desc-columns>
     </index>
-    <index id="34" parent="14" name="FKswktv4yqtb4b5ir1jasnjn04i">
+    <index id="35" parent="14" name="FKswktv4yqtb4b5ir1jasnjn04i">
       <columns>conseiller_id</columns>
       <desc-columns></desc-columns>
     </index>
-    <key id="35" parent="14" name="PRIMARY">
+    <key id="36" parent="14" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="36" parent="14" name="FKl2osx290ndgap6h5hpl6kt455">
+    <foreign-key id="37" parent="14" name="FKl2osx290ndgap6h5hpl6kt455">
       <columns>adresse_Id</columns>
       <ref-key>~.adresse.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>restrict</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="37" parent="14" name="FKswktv4yqtb4b5ir1jasnjn04i">
+    <foreign-key id="38" parent="14" name="FKswktv4yqtb4b5ir1jasnjn04i">
       <columns>conseiller_id</columns>
       <ref-key>~.user.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>restrict</cascade-delete-rule>
     </foreign-key>
-    <column id="38" parent="15" name="next_val">
+    <column id="39" parent="15" name="next_val">
       <data-type>bigint(20)|0</data-type>
     </column>
-    <column id="39" parent="16" name="Client_id">
+    <column id="40" parent="16" name="Client_id">
       <mandatory>1</mandatory>
       <data-type>bigint(20)|0</data-type>
     </column>
-    <column id="40" parent="16" name="listeCompte_id">
+    <column id="41" parent="16" name="listeCompte_id">
       <mandatory>1</mandatory>
       <data-type>bigint(20)|0</data-type>
     </column>
-    <index id="41" parent="16" name="FK27la9afwgaayflp55tnl1nxws">
+    <index id="42" parent="16" name="FK27la9afwgaayflp55tnl1nxws">
       <columns>Client_id</columns>
       <desc-columns></desc-columns>
     </index>
-    <index id="42" parent="16" name="UK_473g81r04o9x43qv1u4jxp1cu">
+    <index id="43" parent="16" name="UK_473g81r04o9x43qv1u4jxp1cu">
       <columns>listeCompte_id</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="43" parent="16" name="UK_473g81r04o9x43qv1u4jxp1cu">
+    <key id="44" parent="16" name="UK_473g81r04o9x43qv1u4jxp1cu">
       <columns>listeCompte_id</columns>
       <underlying-index>UK_473g81r04o9x43qv1u4jxp1cu</underlying-index>
     </key>
-    <foreign-key id="44" parent="16" name="FK27la9afwgaayflp55tnl1nxws">
+    <foreign-key id="45" parent="16" name="FK27la9afwgaayflp55tnl1nxws">
       <columns>Client_id</columns>
       <ref-key>~.client.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>restrict</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="45" parent="16" name="FKjwsqtyl3nmibtn003d5tdu9dd">
+    <foreign-key id="46" parent="16" name="FKjwsqtyl3nmibtn003d5tdu9dd">
       <columns>listeCompte_id</columns>
       <ref-key>~.compte.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>restrict</cascade-delete-rule>
     </foreign-key>
-    <column id="46" parent="17" name="DTYPE">
+    <column id="47" parent="17" name="DTYPE">
       <mandatory>1</mandatory>
       <data-type>varchar(31)|0</data-type>
     </column>
-    <column id="47" parent="17" name="id">
+    <column id="48" parent="17" name="id">
       <mandatory>1</mandatory>
       <data-type>bigint(20)|0</data-type>
     </column>
-    <column id="48" parent="17" name="dateouverture">
+    <column id="49" parent="17" name="dateouverture">
       <data-type>datetime|0</data-type>
     </column>
-    <column id="49" parent="17" name="solde">
+    <column id="50" parent="17" name="solde">
       <data-type>double|0</data-type>
     </column>
-    <column id="50" parent="17" name="type">
+    <column id="51" parent="17" name="type">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="51" parent="17" name="decouvert">
+    <column id="52" parent="17" name="decouvert">
       <data-type>double|0</data-type>
     </column>
-    <column id="52" parent="17" name="taux">
+    <column id="53" parent="17" name="taux">
       <data-type>double|0</data-type>
     </column>
-    <column id="53" parent="17" name="client_id">
+    <column id="54" parent="17" name="client_id">
       <data-type>bigint(20)|0</data-type>
     </column>
-    <index id="54" parent="17" name="FKryjsoq3q8q4t1chcn426fweox">
+    <index id="55" parent="17" name="FKryjsoq3q8q4t1chcn426fweox">
       <columns>client_id</columns>
       <desc-columns></desc-columns>
     </index>
-    <key id="55" parent="17" name="PRIMARY">
+    <key id="56" parent="17" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="56" parent="17" name="FKryjsoq3q8q4t1chcn426fweox">
+    <foreign-key id="57" parent="17" name="FKryjsoq3q8q4t1chcn426fweox">
       <columns>client_id</columns>
       <ref-key>~.client.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>restrict</cascade-delete-rule>
     </foreign-key>
-    <column id="57" parent="18" name="DTYPE">
+    <column id="58" parent="18" name="DTYPE">
       <mandatory>1</mandatory>
       <data-type>varchar(31)|0</data-type>
     </column>
-    <column id="58" parent="18" name="id">
+    <column id="59" parent="18" name="id">
       <mandatory>1</mandatory>
       <data-type>bigint(20)|0</data-type>
     </column>
-    <column id="59" parent="18" name="login">
+    <column id="60" parent="18" name="login">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="60" parent="18" name="nom">
+    <column id="61" parent="18" name="nom">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="61" parent="18" name="prenom">
+    <column id="62" parent="18" name="prenom">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="62" parent="18" name="pwd">
+    <column id="63" parent="18" name="pwd">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="63" parent="18" name="role">
+    <column id="64" parent="18" name="role">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="64" parent="18" name="telephone">
+    <column id="65" parent="18" name="telephone">
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="65" parent="18" name="adresse_Id">
+    <column id="66" parent="18" name="adresse_Id">
       <data-type>bigint(20)|0</data-type>
     </column>
-    <column id="66" parent="18" name="gerant_id">
+    <column id="67" parent="18" name="gerant_id">
       <data-type>bigint(20)|0</data-type>
     </column>
-    <index id="67" parent="18" name="FK4at1nkwgj6esmafsj88w9u2e3">
+    <index id="68" parent="18" name="FK4at1nkwgj6esmafsj88w9u2e3">
       <columns>adresse_Id</columns>
       <desc-columns></desc-columns>
     </index>
-    <index id="68" parent="18" name="FK9d1leltw6bseohk0sj30ihsy6">
+    <index id="69" parent="18" name="FK9d1leltw6bseohk0sj30ihsy6">
       <columns>gerant_id</columns>
       <desc-columns></desc-columns>
     </index>
-    <key id="69" parent="18" name="PRIMARY">
+    <key id="70" parent="18" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="70" parent="18" name="FK4at1nkwgj6esmafsj88w9u2e3">
+    <foreign-key id="71" parent="18" name="FK4at1nkwgj6esmafsj88w9u2e3">
       <columns>adresse_Id</columns>
       <ref-key>~.adresse.PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>restrict</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="71" parent="18" name="FK9d1leltw6bseohk0sj30ihsy6">
+    <foreign-key id="72" parent="18" name="FK9d1leltw6bseohk0sj30ihsy6">
       <columns>gerant_id</columns>
       <ref-key>PRIMARY</ref-key>
       <cascade-update-rule>restrict</cascade-update-rule>
       <cascade-delete-rule>restrict</cascade-delete-rule>
     </foreign-key>
+    <column id="73" parent="19" name="id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="74" parent="19" name="idCrediteur">
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="75" parent="19" name="idDebiteur">
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="76" parent="19" name="montant">
+      <mandatory>1</mandatory>
+      <data-type>double|0</data-type>
+    </column>
+    <key id="77" parent="19" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
   </database-model>
 </dataSource>

@@ -1,4 +1,4 @@
-package com.proxibanquev4trio.webservices;
+package com.proxibanquev4trio.logging;
 
 /**
  * Hello world!

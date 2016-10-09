@@ -2,6 +2,7 @@ package com.proxibanquev4trio.services;
 
 import com.proxibanquev4trio.dao.IConseillerDao;
 import com.proxibanquev4trio.domaine.Conseiller;
+import com.proxibanquev4trio.logging.Loggable;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class ConseillerService implements IConseillerService {
 	 */
 	
 
-	
+	@Loggable
 	public Conseiller Authentification(String login){
 		
 		Conseiller conseiller=null;

@@ -14,7 +14,8 @@
 		<module>dao</module>
 		<module>webservices</module>
 		<module>presentation</module>
-	</modules>
+        <module>logging</module>
+    </modules>
 
 	<packaging>pom</packaging>
 
@@ -151,6 +152,12 @@
 		<!--<artifactId>logback-classic</artifactId>-->
 		<!--<version>${logback.version}</version>-->
 	<!--</dependency>-->
+	<dependency>
+		<groupId>com.sun.jersey</groupId>
+		<artifactId>jersey-client</artifactId>
+		<version>1.8</version>
+	</dependency>
+
 
 	</dependencies>
 

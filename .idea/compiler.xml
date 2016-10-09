@@ -24,6 +24,7 @@
         <processorPath useClasspath="true" />
         <module name="dao" />
         <module name="domaine" />
+        <module name="logging" />
         <module name="presentation" />
         <module name="services" />
         <module name="webservices" />
@@ -32,6 +33,7 @@
     <bytecodeTargetLevel>
       <module name="dao" target="1.8" />
       <module name="domaine" target="1.8" />
+      <module name="logging" target="1.8" />
       <module name="presentation" target="1.8" />
       <module name="Proxibanquev4Trio" target="1.8" />
       <module name="services" target="1.8" />

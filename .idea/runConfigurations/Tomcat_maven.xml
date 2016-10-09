@@ -9,7 +9,7 @@
       </file>
       <file path="$PROJECT_DIR$/webservices/target/proxibanquev4trio-webservices.war">
         <settings>
-          <option name="CONTEXT_PATH" value="/webservices" />
+          <option name="CONTEXT_PATH" value="/proxibanquev4trio-webservices" />
         </settings>
       </file>
     </deployment>

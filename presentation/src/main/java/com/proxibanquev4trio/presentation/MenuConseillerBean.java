@@ -1,16 +1,14 @@
 package com.proxibanquev4trio.presentation;
 
 
+import com.proxibanquev4trio.domaine.Client;
+import com.proxibanquev4trio.domaine.Compte;
+import com.proxibanquev4trio.logging.Loggable;
+import org.springframework.stereotype.Component;
 
-import javax.faces.application.NavigationHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-
-
-import com.proxibanquev4trio.domaine.Adresse;
-import com.proxibanquev4trio.domaine.Client;
-import com.proxibanquev4trio.domaine.Compte;
 import java.util.List;
 
 /**
@@ -18,6 +16,7 @@ import java.util.List;
  */
 @ManagedBean
 @ViewScoped
+@Component
 public class MenuConseillerBean {
 
     private List<Client> clients;
@@ -30,7 +29,6 @@ public class MenuConseillerBean {
 
 
     public MenuConseillerBean() {
-
         LoginBean loginBean = (LoginBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
 //        ClientService clientService = new ClientService();
 //
@@ -94,7 +92,7 @@ public class MenuConseillerBean {
 //        return null;
 //    }
 
-
+    @Loggable
     public List<Client> getClients() {
         return clients;
     }

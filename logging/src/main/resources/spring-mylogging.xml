@@ -15,15 +15,8 @@
         http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd"
        default-autowire="byName">
 
-    <context:component-scan base-package="com.proxibanquev4trio.services"/>
-    <import resource="classpath*:spring-dao.xml"/>
-
-    <!--Import for loggable annotation-->
-    <import resource="classpath*:spring-mylogging.xml"/>
-
-
-
+    <context:component-scan base-package="com.proxibanquev4trio.logging"/>
     <aop:aspectj-autoproxy />
 
 
-    </beans>
+</beans>
