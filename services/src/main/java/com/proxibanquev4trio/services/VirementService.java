@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class VirementService implements IVirementService {
 
+
     @Override
     @Loggable
     public void effectuerVirement(Compte debiteur, Compte crediteur, double montant) {
