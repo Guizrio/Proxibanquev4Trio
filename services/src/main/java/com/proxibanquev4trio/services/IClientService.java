@@ -12,5 +12,8 @@ public interface IClientService {
 	void creerClient(Client client);
 
 	List<Client> findByConseiller(Conseiller conseiller);
+	
+	public List<Client> getAllClient();
+	
 
 }

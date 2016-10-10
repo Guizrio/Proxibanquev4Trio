@@ -16,6 +16,15 @@ public class ClientService implements IClientService {
 	@Inject
 	IClientDao clientdao;
 	
+	public IClientDao getClientdao() {
+		return clientdao;
+	}
+
+	public void setClientdao(IClientDao clientdao) {
+		this.clientdao = clientdao;
+	}
+
+	
 	
 	@Override
 	public void updateClient(Client client){
@@ -30,14 +39,7 @@ public class ClientService implements IClientService {
 		clientdao.save(client);
 	}
 	
-	public IClientDao getClientdao() {
-		return clientdao;
-	}
-
-	public void setClientdao(IClientDao clientdao) {
-		this.clientdao = clientdao;
-	}
-
+	
 
 	@Override
 	public List<Client> findByConseiller(Conseiller conseiller) {
@@ -45,4 +47,10 @@ public class ClientService implements IClientService {
 		return clientdao.findByConseiller(conseiller);
 	}
 
+	public List<Client> getAllClient(){
+		
+		return clientdao.findAll();
+		
+	}
+	
 }

@@ -1,8 +1,15 @@
 package com.proxibanquev4trio.services;
 
+import com.proxibanquev4trio.dao.IVirementDao;
 import com.proxibanquev4trio.domaine.Compte;
 import com.proxibanquev4trio.domaine.Virement;
 import com.proxibanquev4trio.logging.Loggable;
+
+import java.sql.Date;
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +17,17 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class VirementService implements IVirementService {
+	
+	
+	@Inject
+	IVirementDao virementDao;
+	
+	
+	public List<Virement> getAllVirementBetween(Date date1, Date date2){
+		
+		return virementDao.findAllTimeStampBetweenOrderByTimeStampAsc(date1, date2);
+		
+	}
 
 
     @Override

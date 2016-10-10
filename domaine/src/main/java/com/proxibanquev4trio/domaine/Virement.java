@@ -1,5 +1,7 @@
 package com.proxibanquev4trio.domaine;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +22,7 @@ public class Virement {
     private Long idCrediteur;
     private Long idDebiteur;
     private double montant;
+    private Date date;
 
 
 
@@ -54,4 +57,14 @@ public class Virement {
     public void setId(Long id) {
         this.id = id;
     }
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+    
+    
 }
