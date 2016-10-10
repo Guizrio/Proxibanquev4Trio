@@ -30,6 +30,10 @@ public class NavigateBean implements Serializable{
     public String redirectToLogin(){
         return "/login.xhtml?faces-redirect=true";
     }
+    
+    public String redirectToTransaction(){
+        return "/rapporttransactions.xhtml?faces-redirect=true";
+    }
 
     /**
      * Permet de naviguer vers la page de login

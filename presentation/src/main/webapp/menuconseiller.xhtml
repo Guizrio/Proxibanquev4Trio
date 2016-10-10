@@ -48,12 +48,12 @@
                                     Vous pouvez voir votre liste des clients ici
                                 </f:facet>
 
-                                <p:panel header="#{client.idPersonne}" style="text-align:center">
+                                <p:panel header="#{client.id}" style="text-align:center">
                                     <h:panelGrid columns="1" style="width:100%">
                                         <h:graphicImage library="images" name="thomasT.jpg"/>
 
                                         <h:outputText value="#{client.prenom} #{client.nom}"/>
-                                        <h:outputText value="id = #{client.idPersonne}"/>
+                                        <h:outputText value="id = #{client.id}"/>
 
 
                                         <p:separator/>
@@ -93,7 +93,7 @@
                                         </f:facet>
 
                                         <h:outputText value="Id:"/>
-                                        <h:outputText value="#{menuConseillerBean.selectedClient.idPersonne}"/>
+                                        <h:outputText value="#{menuConseillerBean.selectedClient.id}"/>
 
                                         <h:outputLabel for="prenom" value="Prenom:"/>
                                         <p:inplace id="prenom" editor="true">
@@ -109,7 +109,7 @@
 
                                         <h:outputLabel for="mail" value="Mail:"/>
                                         <p:inplace id="mail" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.mail}"
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.email}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
@@ -121,13 +121,13 @@
 
                                         <h:outputLabel for="numRue" value="Numero de rue:"/>
                                         <p:inplace id="numRue" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.numRue}"
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.numeroDeRue}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="nomRue" value="Nom de rue:"/>
                                         <p:inplace id="nomRue" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.nomRue}"
+                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.nomDeRue}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
@@ -153,7 +153,7 @@
                                     <p:spacer height="30"/>
 
                                     <p:commandButton value="Modifier client"
-                                                     action="#{menuConseillerBean.doSaveTheQueen}"/>
+                                                     action="#{menuConseillerBean.updateClient}"/>
 
                                 </p:outputPanel>
                             </p:dialog>
@@ -216,7 +216,7 @@
 
                                         <h:outputLabel for="createmail" value="Mail:"/>
                                         <p:inplace id="createmail" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.mail}"
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.email}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
@@ -228,13 +228,13 @@
 
                                         <h:outputLabel for="createnumRue" value="Numero de rue:"/>
                                         <p:inplace id="createnumRue" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.numRue}"
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.numeroDeRue}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="createnomRue" value="Nom de rue:"/>
                                         <p:inplace id="createnomRue" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.nomRue}"
+                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.nomDeRue}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
@@ -259,8 +259,8 @@
                                     <p:separator/>
                                     <p:spacer height="30"/>
 
-                                    <p:commandButton value="Modifier client"
-                                                     action="#{menuConseillerBean.doSaveNewQueen}"/>
+                                    <p:commandButton value="Creer client"
+                                                     action="#{menuConseillerBean.creerClient}"/>
 
                                 </p:outputPanel>
                             </p:dialog>
