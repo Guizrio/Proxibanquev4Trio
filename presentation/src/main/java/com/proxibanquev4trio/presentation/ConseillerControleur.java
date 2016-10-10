@@ -37,20 +37,24 @@ public class ConseillerControleur {
         String login=request.getUserPrincipal().getName();
         user = conseillerService.authentification(login);       //@Todo ça va pas du tout dans la dao et service : un user peut etre un gerant !!!!
 
-        if(user != null){
+        if(user == null){
 
-            loginBean.setUser(user);
-            loginBean.setLogin(request.getParameter("login"));
-            loginBean.setPassword(request.getParameter("login"));
-
-        }else if(user instanceof Conseiller){
             loginBean.setPassword(null);
             loginBean.setLogin(null);
             loginBean.setUser(null);
 
-        }else if (request.isUserInRole("Gerant")) {
-                loginBean.setGerant(true);
+        }else if(user instanceof Conseiller){
 
+            loginBean.setUser(user);
+            loginBean.setGerant(false);
+            loginBean.setLogin(request.getParameter("login"));
+            loginBean.setPassword(request.getParameter("password"));
+
+        }else if (request.isUserInRole("Gerant")) {
+                loginBean.setUser(user);
+                loginBean.setGerant(true);
+                loginBean.setLogin(request.getParameter("login"));
+                loginBean.setPassword(request.getParameter("password"));
         } else {
             loginBean.setGerant(false);
             loginBean.setPassword(null);
