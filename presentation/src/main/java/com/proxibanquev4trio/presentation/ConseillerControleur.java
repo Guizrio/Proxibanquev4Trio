@@ -69,4 +69,17 @@ public class ConseillerControleur {
         return new ModelAndView("menuconseiller");
     }
 
+    @RequestMapping("/disconnect")
+    protected ModelAndView disconnect(HttpServletRequest request,
+                                         HttpServletResponse response) throws Exception {
+
+        request.getSession().invalidate();
+        return new ModelAndView("menuconseiller");
+
+    }
+
+
+
+
+
 }

@@ -40,7 +40,7 @@ public class LoginBean implements Serializable {
 
 	public String disconnect() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "login.xhtml?faces-redirect=true";
+		return "/index.jsp?faces-redirect=true";
 	}
 
 	public String getLogin() {
@@ -58,7 +58,6 @@ public class LoginBean implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 
 	public boolean isGerant() {
