@@ -8,6 +8,6 @@
 </head>
 <body>
 	
-<jsp:forward page="menuconseiller.xhtml"></jsp:forward> 
+<jsp:forward page="/login"></jsp:forward>
 </body>
 </html>
