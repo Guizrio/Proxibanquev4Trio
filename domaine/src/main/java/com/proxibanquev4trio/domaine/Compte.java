@@ -1,6 +1,7 @@
 package com.proxibanquev4trio.domaine;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public abstract class Compte {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private java.sql.Timestamp dateouverture;
+    private Date dateouverture;
     private Double solde;
     protected String type;
 
@@ -58,11 +59,11 @@ public abstract class Compte {
         this.id = id;
     }
 
-    public java.sql.Timestamp getDateouverture() {
+    public Date getDateouverture() {
         return dateouverture;
     }
 
-    public void setDateouverture(java.sql.Timestamp dateouverture) {
+    public void setDateouverture(Date dateouverture) {
         this.dateouverture = dateouverture;
     }
 

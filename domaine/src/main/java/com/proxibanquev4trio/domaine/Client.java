@@ -37,7 +37,7 @@ public class Client{
 	
   private String email;
   
-  @OneToMany
+  @OneToMany(cascade=CascadeType.PERSIST)
   protected List<Compte> listeCompte;
   
   @ManyToOne(cascade=CascadeType.PERSIST)

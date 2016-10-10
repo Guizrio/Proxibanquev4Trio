@@ -23,11 +23,7 @@ public class VirementService implements IVirementService {
 	IVirementDao virementDao;
 	
 	
-	public List<Virement> getAllVirementBetween(Date date1, Date date2){
-		
-		return virementDao.findAllTimeStampBetweenOrderByTimeStampAsc(date1, date2);
-		
-	}
+	
 	
 	public List<Virement> getAllVirement(){
 		
@@ -76,6 +72,14 @@ public class VirementService implements IVirementService {
 //
 //        }
     }
+
+
+
+	@Override
+	public List<Virement> getAllVirementBetween(Date date1, Date date2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
