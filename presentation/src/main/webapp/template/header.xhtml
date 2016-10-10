@@ -16,23 +16,15 @@
 				<p:menubar>
 					<f:facet name="options">
 						<p:commandButton value="liste conseiller" rendered="#{loginBean.gerant}"
-							action="#{navigateBean.redirectToMenuConseiller}" />
+							action="#{navigateBean.redirectToMenuGerant()}" />
 					</f:facet>
 
-					<f:facet name="options">
-						<p:commandButton value="creer conseiller" rendered="#{loginBean.gerant}"
-							action="#{navigateBean.redirectToVirement()}" />
-					</f:facet>
 					
 					<f:facet name="options">
 						<p:commandButton value="liste client"
-							action="#{navigateBean.redirectToMenuConseiller}" />
+							action="#{navigateBean.redirectToMenuConseiller()}" />
 					</f:facet>
 					
-					<f:facet name="options">
-						<p:commandButton value="creer client"
-							action="#{navigateBean.redirectToMenuConseiller}" />
-					</f:facet>
 
 					<f:facet name="options">
 						<p:commandButton value="Faire un virement"
@@ -41,7 +33,7 @@
 
 					<f:facet name="options">
 						<p:commandButton value="alertes decouvert"
-							action="#{navigateBean.redirectToVirement()}" />
+							action="#{navigateBean.redirectToAlertDecouvert()}" />
 					</f:facet>
 
 					<f:facet name="options">

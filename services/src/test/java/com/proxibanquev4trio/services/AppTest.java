@@ -9,10 +9,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Created by Stagiaire on 05/10/2016.
  */
 public class AppTest {
-    @Test
-    public void main() throws Exception {
-
-    }
     
     @Test
     public void testAuthentification(){
@@ -23,7 +19,7 @@ public class AppTest {
     	
     	Conseiller conseiller = new Conseiller();
     	
-    	conseiller=service.Authentification("login1");
+    	conseiller=service.authentification("login1");
     	
     	System.out.println(conseiller.getNom());
     }
