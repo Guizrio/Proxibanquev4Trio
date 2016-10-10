@@ -17,5 +17,7 @@ public interface IVirementService {
     void effectuerVirement(Virement virement);
     
     public List<Virement> getAllVirementBetween(Date date1, Date date2);
+    
+    public List<Virement> getAllVirement();
 
 }

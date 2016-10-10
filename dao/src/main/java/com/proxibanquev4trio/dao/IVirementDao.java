@@ -15,5 +15,7 @@ public interface IVirementDao extends JpaRepository<Virement, Integer> {
 	
 	
 	public List<Virement> findAllTimeStampBetweenOrderByTimeStampAsc(Date startDate, Date endDate);
+	
+	public List<Virement> findAll();
 
 }

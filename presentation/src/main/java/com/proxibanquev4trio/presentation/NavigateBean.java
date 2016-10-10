@@ -40,6 +40,13 @@ public class NavigateBean implements Serializable{
         return "/login.xhtml";
     }
 
+    public String toRapportTransaction(){
+    	return "/secured_pages/rapporttransactions.xhtml";
+    }
+    
+    public String redirectToRapportTransaction(){
+    	return "/secured_pages/rapporttransactions.xhtml?faces-redirect=true";
+    }
     /**
      * Permet de rediriger vers la page des clients du conseiller
      *

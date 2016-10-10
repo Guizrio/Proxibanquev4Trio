@@ -28,6 +28,13 @@ public class VirementService implements IVirementService {
 		return virementDao.findAllTimeStampBetweenOrderByTimeStampAsc(date1, date2);
 		
 	}
+	
+	public List<Virement> getAllVirement(){
+		
+		return virementDao.findAll();
+		
+	}
+
 
 
     @Override
