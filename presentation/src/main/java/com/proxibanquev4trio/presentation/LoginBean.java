@@ -1,20 +1,18 @@
 package com.proxibanquev4trio.presentation;
 
-import javax.faces.application.FacesMessage;
+//import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+//
+//import org.springframework.context.ApplicationContext;
+//import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.proxibanquev4trio.domaine.Conseiller;
 import com.proxibanquev4trio.services.IConseillerService;
-
-
 import java.io.Serializable;
 
 /**
@@ -32,23 +30,25 @@ public class LoginBean implements Serializable {
 
 	private boolean loggedIn;
 
-	// @Inject
-	private IUser user;
+	@Inject
+	private IConseillerService conseillerService;
 
 	private Conseiller conseiller;
 
+	@ManagedProperty(value = "#{navigateBean}")
+	@Inject
+	private NavigateBean navigateBean;
+
 	public LoginBean() {
-		loggedIn = false;
+		loggedIn = true;
 		// authService = new AuthService();
 		// conseillerService = new ConseillerService();
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
-		
+
 		String login = request.getUserPrincipal().getName();
-		
-		ApplicationContext context= new ClassPathXmlApplicationContext("spring-presentation.xml");
-		user =(IUser) context.getBean(IUser.class);
-		conseiller = user.findByLogin(login);
+
+		conseiller = conseillerService.authentification(login);
 	}
 
 	public boolean isGerant() {
@@ -62,48 +62,49 @@ public class LoginBean implements Serializable {
 
 	}
 
-	public String doLogin() {
+	// public String doLogin() {
 
-		// try {
-		// boolean isValidConseiller = authService.authentification(login,
-		// password);
-		//
-		// if(isValidConseiller){
-		// loggedIn = true;
-		// conseiller = conseillerService.lireUnConseiller(login);
-		//
-		// }else{
-		// loggedIn = false;
-		// conseiller = null;
-		//
-		// FacesMessage msg = new FacesMessage("Erreur de login ou de password
-		// !", "MESSAGE D'ERREUR");
-		// msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-		// FacesContext.getCurrentInstance().addMessage(null, msg);
-		// }
-		//
-		// }catch(
-		//
-		// DAOException e)
-		// {
-		//
-		// e.printStackTrace();
-		// loggedIn = false;
-		// conseiller = null;
-		//
-		// ;
-		//
-		// }
-		return "plouf";
-	}
+	// try {
+	// boolean isValidConseiller = authService.authentification(login,
+	// password);
+	//
+	// if(isValidConseiller){
+	// loggedIn = true;
+	// conseiller = conseillerService.lireUnConseiller(login);
+	//
+	// }else{
+	// loggedIn = false;
+	// conseiller = null;
+	//
+	// FacesMessage msg = new FacesMessage("Erreur de login ou de password
+	// !", "MESSAGE D'ERREUR");
+	// msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+	// FacesContext.getCurrentInstance().addMessage(null, msg);
+	// }
+	//
+	// }catch(
+	//
+	// DAOException e)
+	// {
+	//
+	// e.printStackTrace();
+	// loggedIn = false;
+	// conseiller = null;
+	//
+	// ;
+	//
+	// }
+	// return "plouf";
+	// }
 
 	public String disconnect() {
-		// loggedIn = false;
-		// password = null;
-		// login = null;
+		loggedIn = false;
+		password = null;
+		login = null;
 		//
-		// conseiller = null;
+		conseiller = null;
 		//
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "plouf";
 	}
 
@@ -137,5 +138,13 @@ public class LoginBean implements Serializable {
 
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
+	}
+
+	public void setNavigateBean(NavigateBean navigateBean) {
+		this.navigateBean = navigateBean;
+	}
+
+	public NavigateBean getNavigateBean() {
+		return navigateBean;
 	}
 }

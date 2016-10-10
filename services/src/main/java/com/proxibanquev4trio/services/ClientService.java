@@ -1,11 +1,14 @@
 package com.proxibanquev4trio.services;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Component;
 
 import com.proxibanquev4trio.dao.IClientDao;
 import com.proxibanquev4trio.domaine.Client;
+import com.proxibanquev4trio.domaine.Conseiller;
 
 @Component
 public class ClientService implements IClientService {
@@ -33,6 +36,13 @@ public class ClientService implements IClientService {
 
 	public void setClientdao(IClientDao clientdao) {
 		this.clientdao = clientdao;
+	}
+
+
+	@Override
+	public List<Client> findByConseiller(Conseiller conseiller) {
+		
+		return clientdao.findByConseiller(conseiller);
 	}
 
 }

@@ -35,11 +35,11 @@ public class ConseillerService implements IConseillerService {
 	
 
 	@Loggable
-	public Conseiller Authentification(String login){
+	public Conseiller authentification(String login){
 		
 		Conseiller conseiller=null;
 		
-		conseiller=this.conseillerDao.findByLogin(login).get(0);
+		conseiller=this.conseillerDao.findByLogin(login);
 
 		return conseiller;
 		
@@ -65,6 +65,9 @@ public class ConseillerService implements IConseillerService {
 	public void setConseillerDao(IConseillerDao conseillerDao) {
 		this.conseillerDao = conseillerDao;
 	}
+
+
+	
 	
 
 

@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface IConseillerDao extends JpaRepository<Conseiller, Integer> {
 	
-	public List<Conseiller> findById(Long id);
+	public Conseiller findById(Long id);
 	
-	public List<Conseiller> findByLogin(String login);
+	public Conseiller findByLogin(String login);
 	
 	
 	
