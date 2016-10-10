@@ -18,6 +18,7 @@
     <import resource="classpath*:spring-dao.xml"/>
 
     <!-- INFO 2 : auto decouverte des beans-->
+    <context:annotation-config />
     <context:component-scan base-package="com.proxibanquev4trio.webservices" />
 
 

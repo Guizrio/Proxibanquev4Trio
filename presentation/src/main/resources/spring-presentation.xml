@@ -15,6 +15,7 @@
         http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd"
        default-autowire="byName">
 
+    <context:annotation-config />
 	 <context:component-scan base-package="com.proxibanquev4trio.presentation"/>
     <import resource="classpath*:spring-service.xml"/>
 
