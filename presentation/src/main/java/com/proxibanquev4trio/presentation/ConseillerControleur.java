@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.HEAD;
 
 /**
  * Created by Guillaume on 10/10/2016.
@@ -25,8 +26,6 @@ public class ConseillerControleur {
     @Inject
     LoginBean loginBean;
 
-    private User user;
-
 
     @RequestMapping({"/entry"})
     protected ModelAndView listeEmployes(HttpServletRequest request,
@@ -35,7 +34,7 @@ public class ConseillerControleur {
 		 * Lancement du Service et récupération données en base
 		 */
         String login=request.getUserPrincipal().getName();
-        user = conseillerService.authentification(login);       //@Todo ça va pas du tout dans la dao et service : un user peut etre un gerant !!!!
+        User user = conseillerService.authentification(login);       //@Todo ça va pas du tout dans la dao et service : un user peut etre un gerant !!!!
 
         if(user == null){
 
@@ -74,7 +73,7 @@ public class ConseillerControleur {
                                          HttpServletResponse response) throws Exception {
 
         request.getSession().invalidate();
-        return new ModelAndView("menuconseiller");
+        return new ModelAndView("test");
 
     }
 
