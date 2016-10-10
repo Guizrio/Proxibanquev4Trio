@@ -57,7 +57,7 @@
 
   <servlet-mapping>
     <servlet-name>dispatcher</servlet-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/pages/*</url-pattern>
   </servlet-mapping>
 
 
@@ -73,7 +73,7 @@
   </welcome-file-list>
 
 
-  
+
   <!--Déclaration datasource-->
   <resource-ref>
     <description>DB Connection</description>

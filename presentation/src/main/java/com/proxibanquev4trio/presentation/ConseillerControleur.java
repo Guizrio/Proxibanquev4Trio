@@ -35,7 +35,7 @@ public class ConseillerControleur {
 		 * Lancement du Service et récupération données en base
 		 */
         String login=request.getUserPrincipal().getName();
-        user = conseillerService.authentification(login);       //@Todo ca va pas du tout dans la dao et service : un user peut etre un gerant !!!!
+        user = conseillerService.authentification(login);       //@Todo ça va pas du tout dans la dao et service : un user peut etre un gerant !!!!
 
         if(user != null){
 
