@@ -4,11 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by Guillaume on 09/10/2016.
  */
 @Entity
+@XmlRootElement
 public class Virement {
 
     @Id
