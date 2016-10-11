@@ -29,10 +29,97 @@
                         <p:spacer height="2"/>
 
 
+
+                        <h:form>
+                            <p:messages autoUpdate="true" />
+
+                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+                                    <p:outputLabel for="selectClientDebiteur" value="Client Débiteur :"  />
+                                    <p:selectOneMenu id="selectClientDebiteur" value="#{virementBean.clientDebiteur}" converter="clientConverter" panelStyle="width:180px"
+                                                     effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith" immediate="true">
+                                        <p:ajax
+                                                listener="#{virementBean.updateCompteDebiteur}"
+                                                update="selectCompteDebiteur"
+                                        />
+
+                                        <!--<f:selectItem itemLabel="Choisissez un client" itemValue="#{virementBean.clientdefault}" noSelectionOption="true"/>-->
+                                        <f:selectItems value="#{clientsBean.clients}" var="client" itemLabel="#{client.prenom} #{client.nom} (id=#{client.id})" itemValue="#{client}"/>
+
+                                        <p:column>
+                                            <h:outputText value="#{t.prenom} #{t.nom} (id=#{t.id})" />
+                                        </p:column>
+
+
+                                    </p:selectOneMenu>
+
+
+                                    <p:outputLabel for="selectCompteDebiteur" value="Compte Débiteur :" />
+                                    <p:selectOneMenu id="selectCompteDebiteur" value="#{virementBean.compteDebiteur}" converter="compteConverter" panelStyle="width:180px"
+                                                     effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith" immediate="true">
+                                        <f:selectItems value="#{virementBean.comptesDuDebiteur}" var="compte" itemLabel="#{compte.type} #{compte.solde} (id=#{compte.id})" itemValue="#{compte}"/>
+
+                                        <!--<p:column style="width:10%">-->
+                                        <!--<h:outputText styleClass="ui-theme ui-theme-#{t.nom} #{t.prenom}" />-->
+                                        <!--</p:column>-->
+
+                                        <p:column>
+                                            <h:outputText value="#{t.type} #{t.solde} (id=#{t.id})" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+
+
+                                </h:panelGrid>
+
+
+                                <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+                                    <p:outputLabel for="selectClientCrediteur" value="Client créditeur :"  />
+                                    <p:selectOneMenu id="selectClientCrediteur" value="#{virementBean.clientCrediteur}" converter="clientConverter" panelStyle="width:180px"
+                                                     effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
+                                        <f:selectItems value="#{clientsBean.clients}" var="client" itemLabel="#{client.prenom} #{client.nom} (id=#{client.id})" itemValue="#{client}" />
+
+                                        <!--<p:column style="width:10%">-->
+                                        <!--<h:outputText styleClass="ui-theme ui-theme-#{t.nom} #{t.prenom}" />-->
+                                        <!--</p:column>-->
+
+                                        <p:column>
+                                            <h:outputText value="#{t.prenom} #{t.nom} (id=#{t.id})" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+
+
+
+
+                                    <p:outputLabel for="selectCompteCrediteur" value="Compte Créditeur :" />
+                                    <p:selectOneMenu id="selectCompteCrediteur" value="#{virementBean.compteCrediteur}" converter="compteConverter" panelStyle="width:180px"
+                                                     effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith" immediate="true">
+                                        <f:selectItems value="#{virementBean.comptesDuCrediteur}" var="compte" itemLabel="#{compte.type} #{compte.solde} (id=#{compte.id})" itemValue="#{compte}"/>
+
+
+                                        <p:column>
+                                            <h:outputText value="#{t.type} #{t.solde} (id=#{t.id})" />
+                                        </p:column>
+                                    </p:selectOneMenu>
+
+                                </h:panelGrid>
+
+
+                            </h:panelGrid>
+
+                            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
+
+                            <p:dialog header="Values" modal="true" showEffect="bounce" widgetVar="dlg" resizable="false">
+                                <p:panelGrid columns="2" id="display" columnClasses="label,value">
+                                    <h:outputText value="Cette fonction n'est pas implémentée" />
+                                </p:panelGrid>
+                            </p:dialog>
+
+
+                        </h:form>
                     </p:panel>
                 </h:form>
-
-
             </f:view>
         </ui:define>
     </ui:composition>
