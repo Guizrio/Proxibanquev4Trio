@@ -12,12 +12,10 @@ import com.proxibanquev4trio.domaine.Virement;
 public interface IVirementService {
 
 
-    void effectuerVirement(Compte debiteur, Compte crediteur, double montant);
-
-    void effectuerVirement(Virement virement);
-    
     public List<Virement> getAllVirementBetween(Date date1, Date date2);
     
     public List<Virement> getAllVirement();
+    
+    public void virement(Compte compte1, Compte compte2, Double valeur);
 
 }

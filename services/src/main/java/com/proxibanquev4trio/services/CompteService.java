@@ -27,15 +27,7 @@ public class CompteService implements ICompteService {
 		
 	}
 	
-	public void virement(Compte compte1, Compte compte2, Double valeur){
-		
-		compte1.setSolde(compte1.getSolde()-valeur);
-		compte2.setSolde(compte2.getSolde()+valeur);
-		
-		daoCompte.save(compte1);
-		daoCompte.save(compte2);
-		
-	}
+
 
 	public ICompteDao getDaoCompte() {
 		return daoCompte;

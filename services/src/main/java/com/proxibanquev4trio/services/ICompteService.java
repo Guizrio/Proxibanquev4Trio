@@ -8,6 +8,6 @@ public interface ICompteService {
 	
 	public List<Compte> getAllCompte();
 	
-	public void virement(Compte compte1, Compte compte2, Double valeur);
+	
 
 }
