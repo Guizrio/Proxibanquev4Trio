@@ -4,7 +4,7 @@
 <body>
 
 	<div align="center">
-		<h1>Bienvenue sur Proxibanque, la banque des dinosaures !</h1>
+		<h1>Bienvenue sur Proxibanque</h1>
 	</div>
 	
 	<form method="POST" action="j_security_check">
