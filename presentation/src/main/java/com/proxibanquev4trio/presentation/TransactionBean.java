@@ -60,13 +60,9 @@ public class TransactionBean implements Serializable {
 	        LineChartSeries series1 = new LineChartSeries();
 	        series1.setLabel("Series 1");
 	 
-	        series1.set("2016-01-01", 51D);
-	        series1.set("2016-01-06", 22D);
-	        series1.set("2016-01-12", 65D);
-	        series1.set("2016-01-18", 74D);
-	        series1.set("2016-01-24", 24D);
-	        series1.set("2016-01-30", 51D);
-	        
+	       for (int i=0 ; i<liste.size(); i++){
+	        series1.set(liste.get(i).getDate().toString(), liste.get(i).getMontant());
+	       }
 
 	        dateModel.addSeries(series1);
 	         
@@ -75,7 +71,6 @@ public class TransactionBean implements Serializable {
 	        dateModel.getAxis(AxisType.Y).setLabel("Valeurs en euros");
 	        DateAxis axis = new DateAxis("Dates");
 	        axis.setTickAngle(-50);
-	        axis.setMax("2016-12-31");
 	        axis.setTickFormat("%b %#d, %y");
 	         
 	        dateModel.getAxes().put(AxisType.X, axis);
@@ -83,36 +78,7 @@ public class TransactionBean implements Serializable {
 		
 		
 		
-		private void createDateModel2() {
-			dateModel = new LineChartModel();
-			LineChartSeries series1 = new LineChartSeries();
-	        series1.setLabel("Valeurs transferts d'argent");
-	 
-	        
-	        series1.set("2016-01-01", 51);
-	        series1.set("2016-01-06", 22);
-	        series1.set("2016-01-12", 65);
-	        series1.set("2016-01-18", 74);
-	        series1.set("2016-01-24", 24);
-	        series1.set("2016-01-30", 51);
-//	        for(int i=0 ; i<liste.size() ; i++){
-//	        	
-//	        	series1.set("2016-10-01", 5);
-//	        }
-
-	        dateModel.addSeries(series1);
-	        
-	        dateModel.setTitle("Virements");
-	        dateModel.setZoom(true);
-	        dateModel.getAxis(AxisType.Y).setLabel("Valeur");
-	        DateAxis axisy = new DateAxis("Dates");
-	        axisy.setTickAngle(-50);
-	        axisy.setMax("2016-02-01");
-	        axisy.setTickFormat("%b %#d, %y");
-	         
-	        dateModel.getAxes().put(AxisType.X, axisy);
-	            
-	    }
+		
 		
 		
 		
