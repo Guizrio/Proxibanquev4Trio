@@ -15,5 +15,7 @@ public interface IClientService {
 	
 	public List<Client> getAllClient();
 	
+	public Client findById(Long id);
+	
 
 }

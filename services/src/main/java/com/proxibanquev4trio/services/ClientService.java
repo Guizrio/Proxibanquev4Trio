@@ -39,6 +39,11 @@ public class ClientService implements IClientService {
 		clientdao.save(client);
 	}
 	
+	public Client findById(Long id){
+		
+		return clientdao.findById(id);
+	
+	}
 	
 
 	@Override
