@@ -18,15 +18,17 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.proxibanquev4trio.domaine.Conseiller;
+import com.proxibanquev4trio.domaine.User;
 import com.proxibanquev4trio.services.ConseillerService;
 import com.proxibanquev4trio.services.IClientService;
 import com.proxibanquev4trio.services.IConseillerService;
+import com.proxibanquev4trio.services.IGerantService;
+
 import java.io.Serializable;
 
 /**
  * Created by Stagiaire on 12/09/2016.
  */
-
 
 @ManagedBean(name = "loginBean")
 @SessionScoped
@@ -41,33 +43,42 @@ public class LoginBean implements Serializable {
 	private boolean loggedIn;
 
 	// @Inject
-	// private AuthService authService;
-	 private IConseillerService conseillerService;
-	private Conseiller conseiller;
+	private IConseillerService conseillerService;
+	private IGerantService gerantService;
+	private User conseiller;
 	private ApplicationContext context;
+
 	public LoginBean() {
 	}
-	
+
 	@PostConstruct
 	public void init() {
 		loggedIn = true;
 		// authService = new AuthService();
 		// conseillerService = new ConseillerService();
 		context = new ClassPathXmlApplicationContext("spring-service.xml");
-		conseillerService = context.getBean(IConseillerService.class);
+		
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
-        String login=request.getUserPrincipal().getName();
-        conseiller = conseillerService.authentification(login);
+		String login = request.getUserPrincipal().getName();
+		if (isGerant()) {
+			gerantService= context.getBean(IGerantService.class);
+			conseiller = gerantService.authentification(login);
+		} else {
+			conseillerService = context.getBean(IConseillerService.class);
+			conseiller = conseillerService.authentification(login);
+		}
+
 	}
 
 	public boolean isGerant() {
-		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
 		request.getUserPrincipal();
 		if (request.isUserInRole("Gerant")) {
-			return false;
-		} else {
 			return true;
+		} else {
+			return false;
 		}
 
 	}
@@ -90,33 +101,33 @@ public class LoginBean implements Serializable {
 		// !", "MESSAGE D'ERREUR");
 		// msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 		// FacesContext.getCurrentInstance().addMessage(null, msg);
-//	}
-//
-//	}catch(
-//
-//	DAOException e)
-//	{
-//
-//            e.printStackTrace();
-//            loggedIn = false;
-//            conseiller = null;
-//
-//           ;
-//
-//        }
-		return"plouf";
+		// }
+		//
+		// }catch(
+		//
+		// DAOException e)
+		// {
+		//
+		// e.printStackTrace();
+		// loggedIn = false;
+		// conseiller = null;
+		//
+		// ;
+		//
+		// }
+		return "plouf";
 	}
 
 	public String disconnect() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-//		loggedIn = false;
-//		password = null;
-//		login = null;
-//
-//		conseiller = null;
-//
-		
-	return "menuconseiller.xhtml?faces-redirect=true";
+		// loggedIn = false;
+		// password = null;
+		// login = null;
+		//
+		// conseiller = null;
+		//
+
+		return "menuconseiller.xhtml?faces-redirect=true";
 	}
 
 	public String getLogin() {
@@ -143,11 +154,11 @@ public class LoginBean implements Serializable {
 		this.loggedIn = loggedIn;
 	}
 
-	public Conseiller getConseiller() {
+	public User getConseiller() {
 		return conseiller;
 	}
 
-	public void setConseiller(Conseiller conseiller) {
+	public void setConseiller(User conseiller) {
 		this.conseiller = conseiller;
 	}
 
@@ -158,13 +169,11 @@ public class LoginBean implements Serializable {
 	public void setContext(ApplicationContext context) {
 		this.context = context;
 	}
-	
-	
+
 }
-//@ManagedBean(name = "loginBean")        //Sert juste à avoir l'autocomplétion et la recherche incrémentale d'intelliJ dans les pages xhtml (EL interact)
-//@Named
-//@SessionScoped
-//public class LoginBean implements Serializable{
+// @ManagedBean(name = "loginBean") //Sert juste à avoir l'autocomplétion et la
+// recherche incrémentale d'intelliJ dans les pages xhtml (EL interact)
+// @Named
+// @SessionScoped
+// public class LoginBean implements Serializable{
 //
-
-

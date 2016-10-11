@@ -57,6 +57,7 @@
     </web-resource-collection>
     <auth-constraint>
       <role-name>Conseiller</role-name>
+       <role-name>Gerant</role-name>
     </auth-constraint>
   </security-constraint>
 
@@ -73,7 +74,10 @@
     <description>Conseiller</description>
     <role-name>Conseiller</role-name>
   </security-role>
-
+ <security-role>
+    <description>Gerant</description>
+    <role-name>Gerant</role-name>
+  </security-role>
 
 
 </web-app>

@@ -3,6 +3,7 @@ package com.proxibanquev4trio.presentation;
 import com.proxibanquev4trio.domaine.Adresse;
 import com.proxibanquev4trio.domaine.Client;
 import com.proxibanquev4trio.domaine.Compte;
+import com.proxibanquev4trio.domaine.Conseiller;
 import com.proxibanquev4trio.logging.Loggable;
 import com.proxibanquev4trio.services.IClientService;
 import com.proxibanquev4trio.services.IConseillerService;
@@ -43,24 +44,40 @@ public class MenuConseillerBean {
 
 		loginBean = (LoginBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
 		ApplicationContext context = loginBean.getContext();
-//				new ClassPathXmlApplicationContext("spring-service.xml");
+		// new ClassPathXmlApplicationContext("spring-service.xml");
 		clientService = context.getBean(IClientService.class);
 		try {
+			if (loginBean.isGerant()) {
+				clients = clientService.getAllClient();
 
-			clients = clientService.findByConseiller(loginBean.getConseiller());
+				clientToCreate = new Client();
+				clientToCreate.setPrenom("Choisir un prenom");
+				clientToCreate.setNom("Choisir un nom");
+				Adresse adresse = new Adresse();
+				adresse.setNomDeRue("Choisir un nom de rue");
+				adresse.setNumeroDeRue("Choisir un numéro de rue");
+				adresse.setCodePostal("Choisir un code postal");
+				adresse.setVille("Choisir une ville");
+				clientToCreate.setAdresse(adresse);
+				clientToCreate.setEmail("Choisir un mail");
+				clientToCreate.setTelephone("Choisir un num de telephone");
+			
+			} else {
+				clients = clientService.findByConseiller((Conseiller) loginBean.getConseiller());
 
-			clientToCreate = new Client();
-			clientToCreate.setPrenom("Choisir un prenom");
-			clientToCreate.setNom("Choisir un nom");
-			Adresse adresse = new Adresse();
-			adresse.setNomDeRue("Choisir un nom de rue");
-			adresse.setNumeroDeRue("Choisir un numéro de rue");
-			adresse.setCodePostal("Choisir un code postal");
-			adresse.setVille("Choisir une ville");
-			clientToCreate.setAdresse(adresse);
-			clientToCreate.setEmail("Choisir un mail");
-			clientToCreate.setTelephone("Choisir un num de telephone");
-			clientToCreate.setConseiller(loginBean.getConseiller());
+				clientToCreate = new Client();
+				clientToCreate.setPrenom("Choisir un prenom");
+				clientToCreate.setNom("Choisir un nom");
+				Adresse adresse = new Adresse();
+				adresse.setNomDeRue("Choisir un nom de rue");
+				adresse.setNumeroDeRue("Choisir un numéro de rue");
+				adresse.setCodePostal("Choisir un code postal");
+				adresse.setVille("Choisir une ville");
+				clientToCreate.setAdresse(adresse);
+				clientToCreate.setEmail("Choisir un mail");
+				clientToCreate.setTelephone("Choisir un num de telephone");
+				clientToCreate.setConseiller((Conseiller) loginBean.getConseiller());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -110,12 +127,11 @@ public class MenuConseillerBean {
 		this.clientToCreate = clientToCreate;
 	}
 
-
-
 	public String updateClient() {
 
-//		LoginBean loginBean = (LoginBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
-//				.get("loginBean");
+		// LoginBean loginBean = (LoginBean)
+		// FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
+		// .get("loginBean");
 
 		try {
 
@@ -133,14 +149,14 @@ public class MenuConseillerBean {
 	public String creerClient() {
 		// ClientService clientService = new ClientService();
 		// LoginBean loginBean = (LoginBean)
-//		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
+		// FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
 
 		// clientToCreate.setConseiller(loginBean.getConseiller());
 
 		try {
 
 			clientService.creerClient(clientToCreate);
-			
+
 			// return loginBean.getNavigateBean().redirectToMenuConseiller();
 
 		} catch (Exception e) {
