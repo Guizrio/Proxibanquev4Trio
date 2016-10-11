@@ -14,6 +14,7 @@ import com.proxibanquev4trio.domaine.CompteCourant;
 import com.proxibanquev4trio.domaine.CompteEpargne;
 import com.proxibanquev4trio.domaine.Conseiller;
 import com.proxibanquev4trio.domaine.Gerant;
+import com.proxibanquev4trio.domaine.Virement;
 
 public class MiseEnPlaceBD {
 
@@ -31,6 +32,7 @@ public class MiseEnPlaceBD {
 		IConseillerDao daoConseiller=(IConseillerDao) appContext.getBean(IConseillerDao.class);
 		IGerantDao daoGerant=(IGerantDao) appContext.getBean(IGerantDao.class);
 		ICompteDao daoCompte=(ICompteDao) appContext.getBean(ICompteDao.class);
+		IVirementDao daoVirement= (IVirementDao) appContext.getBean(IVirementDao.class);
 		
 
 		Adresse adresse = new Adresse();
@@ -41,12 +43,12 @@ public class MiseEnPlaceBD {
 		adresse.setVille("Villeurbanne");
 		
 		CompteCourant compte1=new CompteCourant();
-		compte1.setDateouverture(new Timestamp(1, 2, 3, 4, 5, 6, 7));
+		compte1.setDateOuverture(new Timestamp(1, 2, 3, 4, 5, 6, 7));
 		compte1.setSolde(10000D);
 		compte1.setDecouvert(200D);
 		
 		CompteEpargne compte2= new CompteEpargne();
-		compte2.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+		compte2.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 		compte2.setSolde(20000D);
 		compte2.setTaux(2D);
 		
@@ -83,12 +85,12 @@ public class MiseEnPlaceBD {
 		client2.setAdresse(adresse2);
 		
 		CompteCourant compte3=new CompteCourant();
-		compte3.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+		compte3.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 		compte3.setSolde(10000D);
 		compte3.setDecouvert(200D);
 		
 		CompteEpargne compte4= new CompteEpargne();
-		compte4.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+		compte4.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 		compte4.setSolde(20000D);
 		compte4.setTaux(2D);
 		
@@ -117,12 +119,12 @@ public class MiseEnPlaceBD {
 			
 			
 			CompteCourant compte5=new CompteCourant();
-			compte5.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte5.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte5.setSolde(10000D);
 			compte5.setDecouvert(200D);
 			
 			CompteEpargne compte6= new CompteEpargne();
-			compte6.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte6.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte6.setSolde(20000D);
 			compte6.setTaux(2D);
 			
@@ -152,12 +154,12 @@ public class MiseEnPlaceBD {
 			
 			
 			CompteCourant compte7=new CompteCourant();
-			compte7.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte7.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte7.setSolde(10000D);
 			compte7.setDecouvert(200D);
 			
 			CompteEpargne compte8= new CompteEpargne();
-			compte8.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte8.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte8.setSolde(20000D);
 			compte8.setTaux(2D);
 			
@@ -187,12 +189,12 @@ public class MiseEnPlaceBD {
 			
 			
 			CompteCourant compte9=new CompteCourant();
-			compte9.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte9.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte9.setSolde(10000D);
 			compte9.setDecouvert(200D);
 			
 			CompteEpargne compte10= new CompteEpargne();
-			compte10.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte10.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte10.setSolde(20000D);
 			compte10.setTaux(2D);
 			
@@ -223,12 +225,12 @@ public class MiseEnPlaceBD {
 			
 			
 			CompteCourant compte11=new CompteCourant();
-			compte11.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte11.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte11.setSolde(10000D);
 			compte11.setDecouvert(200D);
 			
 			CompteEpargne compte12= new CompteEpargne();
-			compte12.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte12.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte12.setSolde(20000D);
 			compte12.setTaux(2D);
 			
@@ -258,12 +260,12 @@ public class MiseEnPlaceBD {
 			
 			
 			CompteCourant compte13=new CompteCourant();
-			compte13.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte13.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte13.setSolde(10000D);
 			compte13.setDecouvert(200D);
 			
 			CompteEpargne compte14= new CompteEpargne();
-			compte14.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte14.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte14.setSolde(20000D);
 			compte14.setTaux(2D);
 			
@@ -293,12 +295,12 @@ public class MiseEnPlaceBD {
 			
 			
 			CompteCourant compte15=new CompteCourant();
-			compte15.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte15.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte15.setSolde(10000D);
 			compte15.setDecouvert(200D);
 			
 			CompteEpargne compte16= new CompteEpargne();
-			compte16.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte16.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte16.setSolde(20000D);
 			compte16.setTaux(2D);
 			
@@ -328,12 +330,12 @@ public class MiseEnPlaceBD {
 			
 			
 			CompteCourant compte17=new CompteCourant();
-			compte17.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte17.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte17.setSolde(10000D);
 			compte17.setDecouvert(200D);
 			
 			CompteEpargne compte18= new CompteEpargne();
-			compte18.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte18.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte18.setSolde(20000D);
 			compte18.setTaux(2D);
 			
@@ -363,12 +365,12 @@ public class MiseEnPlaceBD {
 			
 			
 			CompteCourant compte19=new CompteCourant();
-			compte19.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte19.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte19.setSolde(10000D);
 			compte19.setDecouvert(200D);
 			
 			CompteEpargne compte20= new CompteEpargne();
-			compte20.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte20.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte20.setSolde(20000D);
 			compte20.setTaux(2D);
 			
@@ -398,12 +400,12 @@ public class MiseEnPlaceBD {
 			
 			
 			CompteCourant compte21=new CompteCourant();
-			compte21.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte21.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte21.setSolde(10000D);
 			compte21.setDecouvert(200D);
 			
 			CompteEpargne compte22= new CompteEpargne();
-			compte22.setDateouverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
+			compte22.setDateOuverture(new Timestamp(1, 1, 1, 1, 1, 1, 1));
 			compte22.setSolde(20000D);
 			compte22.setTaux(2D);
 			
@@ -466,6 +468,64 @@ public class MiseEnPlaceBD {
 	    	
 	    	
 	    	daoGerant.save(gerant);
+	    	
+	    	
+	    	//Virements
+	    	
+	    	Virement virement1 = new Virement();
+	    	virement1.setDate(new Date(116, 5, 12));
+	    	virement1.setMontant(2000D);
+	    	daoVirement.save(virement1);
+	    	
+	    	Virement virement2 = new Virement();
+	    	virement2.setDate(new Date(116, 6, 2));
+	    	virement2.setMontant(1000D);
+	    	daoVirement.save(virement2);
+	    	
+	    	Virement virement3 = new Virement();
+	    	virement3.setDate(new Date(116, 7, 8));
+	    	virement3.setMontant(20000D);
+	    	daoVirement.save(virement3);
+	    	
+	    	Virement virement4 = new Virement();
+	    	virement4.setDate(new Date(116, 8, 24));
+	    	virement4.setMontant(1800D);
+	    	daoVirement.save(virement4);
+	    	
+	    	Virement virement5 = new Virement();
+	    	virement5.setDate(new Date(116, 9, 27));
+	    	virement5.setMontant(7000D);
+	    	daoVirement.save(virement5);
+	    	
+	    	Virement virement6 = new Virement();
+	    	virement6.setDate(new Date(116, 10, 2));
+	    	virement6.setMontant(512D);
+	    	daoVirement.save(virement6);
+	    	
+	    	Virement virement7 = new Virement();
+	    	virement7.setDate(new Date(116, 5, 9));
+	    	virement7.setMontant(200D);
+	    	daoVirement.save(virement7);
+	    	
+	    	Virement virement8 = new Virement();
+	    	virement8.setDate(new Date(116, 8, 17));
+	    	virement8.setMontant(3000D);
+	    	daoVirement.save(virement8);
+	    	
+	    	Virement virement9 = new Virement();
+	    	virement9.setDate(new Date(116, 9, 13));
+	    	virement9.setMontant(4500D);
+	    	daoVirement.save(virement9);
+	    	
+	    	Virement virement10 = new Virement();
+	    	virement10.setDate(new Date(116, 7, 23));
+	    	virement10.setMontant(10256D);
+	    	daoVirement.save(virement10);
+	    	
+	    	Virement virement11 = new Virement();
+	    	virement11.setDate(new Date(116, 07, 22));
+	    	virement11.setMontant(5287D);
+	    	daoVirement.save(virement11);
 	    	
 		
 			
