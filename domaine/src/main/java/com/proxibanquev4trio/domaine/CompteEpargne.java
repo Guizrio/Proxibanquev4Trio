@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
  * Classe CompteEpargne qui hérite de la classe Compte.
  * Elle ajoute les propriétés:
  * tauxremuneration: qui est le montant des intérêts : double,
- * @author 
+ * @author Lavelle-Rio-Blameble
  *
  */
 @Entity

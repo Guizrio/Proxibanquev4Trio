@@ -14,10 +14,20 @@ import javax.persistence.OneToOne;
 
 
 /**
- * Classe qui hérite de la classe Humain, à laquelle elle ajoute les paramètres suivants:
- * email: email du client : String
- * comptes : List de comptes : List<Compte>
- * @author Lavele-Theodorou
+ * Classe qui permet de creer un client
+ * ses atributs sont :
+ * 
+ * id : Long numéro d'identification du client
+ * prenom :String prénom du client
+ * nom :String nom du client
+ * telephone :String telephone du client
+ * adresse :Adresse adresse du client
+ * email :String email du client
+ * listeCompte :List<Compte> liste de compte du client
+ * conseiller :Conseiller conseiller du client
+ * 
+ * 
+ * @author Lavelle-Rio-Blameble
  * 
  *
  */

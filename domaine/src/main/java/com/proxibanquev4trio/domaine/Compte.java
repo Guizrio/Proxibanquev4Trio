@@ -16,11 +16,13 @@ import javax.persistence.OneToOne;
  * Classe abstraite compte, définissant les propriétés de base d'un compte
  * bancaire: 
  * 
- * numéro du compte : long, 
- * le solde du compte : Double, 
- * la date d'ouverture du compte : Timestamp, 
+ * id : long, numéro d'identification du compte
+ *dateOuverture : Date date d'ouverture du compte
+ *solde : double , solde du compte
+ *type : String type de compte
+ *client : Client client propriétaire du compte
  * 
- * @author 
+ * @author Lavelle-Rio-Blameble 
  *
  */
 @Entity

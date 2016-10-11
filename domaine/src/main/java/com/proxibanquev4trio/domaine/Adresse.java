@@ -8,7 +8,7 @@ import javax.persistence.Id;
 /**
  * Cette classe est composée des propriétés suivantes : numéro de rue, type de rue (rue, avenue...), nom de rue, code postal et ville.
  *Ils permettent de composer une adresse postale.
- * @author Lavelle-Theodorou
+ * @author Lavelle-Rio-Blameble
  *
  */
 @Entity

@@ -10,6 +10,22 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
+
+/**
+ * Classe Abstraite qui sert à factoriser les atributs commun aux gérants et aux conseillers
+ * 
+ * elle a pour attributs :
+ * 
+ * id : Long numéro d'identification du user
+ * prenom : String prénom du user
+ * nom : String nom du user
+ * telephone : String telephone du user
+ * adresse : Adresse adresse du user
+ * role : String role du user
+ * login : String login du user
+ * pwd : String mot de passe du user
+ * @author Lavelle-Rio-Blameble
+ */
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public abstract class User {

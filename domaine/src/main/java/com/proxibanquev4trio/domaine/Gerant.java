@@ -7,6 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
+
+/**
+ * Classe qui hérite de User et qui permet de gérer les gérants
+ * 
+ * elle a pour attributs :
+ * 
+ * conseillers : List<Conseiller> liste des conseillers de l'agence gérée par le gérant
+ *@author Lavelle-Rio-Blameble
+ */
 @Entity
 public class Gerant extends User{
 	

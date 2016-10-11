@@ -10,10 +10,13 @@ import javax.persistence.OneToMany;
 
 
 /**
- * Classe permettant de manipuler des objets de type Conseiller, qui sont avant tout des {@link Humain}
- * <p>
- * Un conseiller possède un identifiant, un prenom, un nom, une {@link Adresse}, un login et un mot de passe.
- *
+ * Classe qui hérite de User et qui permet de gérer les conseillers
+ * 
+ * elle a pour attributs :
+ * 
+ * clients : List<Client> liste des clients du conseiller
+ * gerant : Gerant gérant du conseiller
+ *@author Lavelle-Rio-Blameble
  */
 @Entity
 public class Conseiller  extends User{

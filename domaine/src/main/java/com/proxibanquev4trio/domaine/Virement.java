@@ -9,7 +9,17 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Created by Guillaume on 09/10/2016.
+ * Classe qui sert à enregistrer les virements en base de données
+ * 
+ * elle a pour attributs :
+ * 
+ * id : Long identifiant du virement
+ * idCrediteur : Long identifiant du compte créditeur
+ * idDebiteur : Long identifiant du compte débiteur
+ * montant : double montant du virement
+ * date : Date date à laquelle a été effectué le virement
+ * 
+ * @author Lavelle-Rio-Blameble
  */
 @Entity
 @XmlRootElement

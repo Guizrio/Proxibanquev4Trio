@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
  * Classe CompteCourant qui hérite de la classe Compte.
  * Elle ajoute les propriétés:
  * decouvert: qui est le montant de l'autorisation de découvert du compte : double,
- * @author 
+ * @author  Lavelle-Rio-Blameble
  *
  */
 @Entity
