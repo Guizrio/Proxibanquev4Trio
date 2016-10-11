@@ -12,72 +12,65 @@ import javax.inject.Inject;
 
 @Component
 public class ConseillerService implements IConseillerService {
-	
-	
+
 	@Inject
 	private IConseillerDao conseillerDao;
-	
-	
-	
-	public ConseillerService(IConseillerDao dao){
-		
-		this.conseillerDao=dao;
-	}
 
+	public ConseillerService(IConseillerDao dao) {
+
+		this.conseillerDao = dao;
+	}
 
 	public ConseillerService() {
 		super();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.proxibanquev4trio.services.IConseillerService#Authentification(java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.proxibanquev4trio.services.IConseillerService#Authentification(java.
+	 * lang.String, java.lang.String)
 	 */
-	
 
 	@Loggable
-	public Conseiller authentification(String login){
-		
-		Conseiller conseiller=null;
-		
-		conseiller=this.conseillerDao.findByLogin(login);
+	public Conseiller authentification(String login) {
+
+		Conseiller conseiller = null;
+
+		conseiller = this.conseillerDao.findByLogin(login);
 
 		return conseiller;
-		
-	}
-	
-	public List<Conseiller> getAllConseiller(){
-		
-		List<Conseiller> liste;
-		
-		liste=conseillerDao.findAll();
-		
-		return liste;
-		
-		
+
 	}
 
+	public List<Conseiller> getAllConseiller() {
+
+		List<Conseiller> liste;
+
+		liste = conseillerDao.findAll();
+
+		return liste;
+
+	}
 
 	public IConseillerDao getConseillerDao() {
 		return conseillerDao;
 	}
 
-
 	public void setConseillerDao(IConseillerDao conseillerDao) {
 		this.conseillerDao = conseillerDao;
 	}
 
+	@Override
+	public void updateConseiller(Conseiller conseiller) {
+		conseillerDao.save(conseiller);
+	}
 
-	
-	
+	@Override
+	public void creerConseiller(Conseiller conseiller) {
 
-
-
-
-
-
-	
-
-
-	
+		conseillerDao.save(conseiller);
+	}
 
 }

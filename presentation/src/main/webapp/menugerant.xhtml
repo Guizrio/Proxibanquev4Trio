@@ -31,16 +31,16 @@
                                        oncomplete="PF('clientCreateDialog').show()"
                                        title="Créer un client">
 
-                            <h:outputText value="Créer un client" style="margin:0 auto;"/>
-                            <f:setPropertyActionListener value="#{menuConseillerBean.clientToCreate}"
-                                                         target="#{menuConseillerBean.clientToCreate}"/>
+                            <h:outputText value="Créer un conseiller" style="margin:0 auto;"/>
+                            <f:setPropertyActionListener value="#{menuGerantBean.conseillerToCreate}"
+                                                         target="#{menuGerantBean.conseillerToCreate}"/>
                         </p:commandLink>
                         <p:separator/>
                         <p:spacer height="2"/>
 
                         <h:form id="form">
-                            <p:dataGrid var="client" value="#{menuConseillerBean.clients}" columns="3" layout="grid"
-                                        rows="12" paginator="true" id="clients"
+                            <p:dataGrid var="conseiller" value="#{menuGerantBean.conseillers}" columns="3" layout="grid"
+                                        rows="12" paginator="true" id="conseillers"
                                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                         rowsPerPageTemplate="6,12,16">
 
@@ -48,12 +48,12 @@
                                     Vous pouvez voir votre liste des clients ici
                                 </f:facet>
 
-                                <p:panel header="#{client.idPersonne}" style="text-align:center">
+                                <p:panel header="#{conseiller.id}" style="text-align:center">
                                     <h:panelGrid columns="1" style="width:100%">
                                         <h:graphicImage library="images" name="thomasT.jpg"/>
 
-                                        <h:outputText value="#{client.prenom} #{client.nom}"/>
-                                        <h:outputText value="id = #{client.idPersonne}"/>
+                                        <h:outputText value="#{conseiller.prenom} #{conseiller.nom}"/>
+                                        <h:outputText value="id = #{conseiller.id}"/>
 
 
                                         <p:separator/>
@@ -63,19 +63,11 @@
                                                        oncomplete="PF('clientDialog').show()"
                                                        title="Détail des clients">
                                             <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;"/>
-                                            <f:setPropertyActionListener value="#{client}"
-                                                                         target="#{menuConseillerBean.selectedClient}"/>
+                                            <f:setPropertyActionListener value="#{conseiller}"
+                                                                         target="#{menuGerantBean.selectedConseiller}"/>
                                         </p:commandLink>
 
                                         <p:spacer height="1"/>
-
-                                        <p:commandLink update=":login-form:form:compteDetail"
-                                                       oncomplete="PF('compteDialog').show()"
-                                                       title="Détail des comptes">
-                                            <h:outputText value="Voir les comptes" style="margin:0 auto;"/>
-                                            <f:setPropertyActionListener value="#{client}"
-                                                                         target="#{menuConseillerBean.selectedClient}"/>
-                                        </p:commandLink>
 
 
                                     </h:panelGrid>
@@ -86,61 +78,61 @@
                             <p:dialog header="Client Infos" widgetVar="clientDialog" modal="true" showEffect="fade"
                                       hideEffect="fade" resizable="false">
                                 <p:outputPanel id="clientDetail" style="text-align:center;">
-                                    <p:panelGrid columns="2" rendered="#{not empty menuConseillerBean.selectedClient}"
+                                    <p:panelGrid columns="2" rendered="#{not empty menuGerantBean.selectedConseiller}"
                                                  columnClasses="label,value">
                                         <f:facet name="header">
                                             <h:graphicImage library="images" name="thomasT.jpg"/>
                                         </f:facet>
 
                                         <h:outputText value="Id:"/>
-                                        <h:outputText value="#{menuConseillerBean.selectedClient.idPersonne}"/>
+                                        <h:outputText value="#{menuGerantBean.selectedConseiller.id}"/>
 
                                         <h:outputLabel for="prenom" value="Prenom:"/>
                                         <p:inplace id="prenom" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.prenom}"
+                                            <p:inputText value="#{menuGerantBean.selectedConseiller.prenom}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="nom" value="Nom:"/>
                                         <p:inplace id="nom" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.nom}"
+                                            <p:inputText value="#{menuGerantBean.selectedConseiller.nom}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="mail" value="Mail:"/>
                                         <p:inplace id="mail" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.mail}"
+                                            <p:inputText value="#{menuGerantBean.selectedConseiller.email}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="telephone" value="Telephone:"/>
                                         <p:inplace id="telephone" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.telephone}"
+                                            <p:inputText value="#{menuGerantBean.selectedConseiller.telephone}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="numRue" value="Numero de rue:"/>
                                         <p:inplace id="numRue" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.numRue}"
+                                            <p:inputText value="#{menuGerantBean.selectedConseiller.adresse.numeroDeRue}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="nomRue" value="Nom de rue:"/>
                                         <p:inplace id="nomRue" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.nomRue}"
+                                            <p:inputText value="#{menuGerantBean.selectedConseiller.adresse.nomDeRue}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
 
                                         <h:outputLabel for="codePostal" value="Code Postal:"/>
                                         <p:inplace id="codePostal" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.codePostal}"
+                                            <p:inputText value="#{menuGerantBean.selectedConseiller.adresse.codePostal}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="ville" value="Ville:"/>
                                         <p:inplace id="ville" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.selectedClient.adresse.ville}"
+                                            <p:inputText value="#{menuGerantBean.selectedConseiller.adresse.ville}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
@@ -152,45 +144,11 @@
                                     <p:separator/>
                                     <p:spacer height="30"/>
 
-                                    <p:commandButton value="Modifier client"
-                                                     action="#{menuConseillerBean.doSaveTheQueen}"/>
+                                    <p:commandButton value="Modifier Conseiller"
+                                                     action="#{menuConseillerBean.updateClient}"/>
 
                                 </p:outputPanel>
                             </p:dialog>
-
-
-                            <p:dialog header="Comptes Infos" widgetVar="compteDialog" modal="true" showEffect="fade"
-                                      hideEffect="fade" resizable="false">
-                                <p:outputPanel id="compteDetail" style="text-align:center;">
-
-                                    <p:panelGrid columns="1" rendered="#{not empty menuConseillerBean.selectedClient}"
-                                                 columnClasses="label,value">
-                                        <f:facet name="header">
-                                            <h:graphicImage library="images" name="thomasT.jpg"/>
-                                        </f:facet>
-
-                                        <p:dataTable id="matabledescompte" var="compte" value="#{menuConseillerBean.selectedClient.comptes}" >
-                                            <p:column headerText="Id">
-                                                <h:outputText value="#{compte.idCompte}"/>
-                                            </p:column>
-
-                                            <p:column headerText="date d'ouverture">
-                                                <h:outputText value="#{compte.dateOuverture}"/>
-                                            </p:column>
-
-                                            <p:column headerText="numero de compte">
-                                                <h:outputText value="#{compte.numCompte}"/>
-                                            </p:column>
-
-                                            <p:column headerText="solde">
-                                                <h:outputText value="#{compte.solde}"/>
-                                            </p:column>
-                                        </p:dataTable>
-
-                                    </p:panelGrid>
-                                </p:outputPanel>
-                            </p:dialog>
-
 
 
                             <p:dialog header="Création de client" widgetVar="clientCreateDialog" modal="true" showEffect="fade"
@@ -204,50 +162,50 @@
 
                                         <h:outputLabel for="createprenom" value="Prenom:"/>
                                         <p:inplace id="createprenom" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.prenom}"
+                                            <p:inputText value="#{menuGerantBean.conseillerToCreate.prenom}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="createnom" value="Nom:"/>
                                         <p:inplace id="createnom" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.nom}"
+                                            <p:inputText value="#{menuGerantBean.conseillerToCreate.nom}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
-                                        <h:outputLabel for="createmail" value="Mail:"/>
-                                        <p:inplace id="createmail" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.mail}"
+                                        <h:outputLabel for="createlogin" value="login:"/>
+                                        <p:inplace id="createlogin" editor="true">
+                                            <p:inputText value="#{menuGerantBean.conseillerToCreate.login}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="createtelephone" value="Telephone:"/>
                                         <p:inplace id="createtelephone" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.telephone}"
+                                            <p:inputText value="#{menuGerantBean.conseillerToCreate.telephone}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="createnumRue" value="Numero de rue:"/>
                                         <p:inplace id="createnumRue" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.numRue}"
+                                            <p:inputText value="#{menuGerantBean.conseillerToCreate.adresse.numeroDeRue}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="createnomRue" value="Nom de rue:"/>
                                         <p:inplace id="createnomRue" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.nomRue}"
+                                            <p:inputText value="#{menuGerantBean.conseillerToCreate.adresse.nomDeRue}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
 
                                         <h:outputLabel for="createcodePostal" value="Code Postal:"/>
                                         <p:inplace id="createcodePostal" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.codePostal}"
+                                            <p:inputText value="#{menuGerantBean.conseillerToCreate.adresse.codePostal}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
                                         <h:outputLabel for="createville" value="Ville:"/>
                                         <p:inplace id="createville" editor="true">
-                                            <p:inputText value="#{menuConseillerBean.clientToCreate.adresse.ville}"
+                                            <p:inputText value="#{menuGerantBean.conseillerToCreate.adresse.ville}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
@@ -259,8 +217,8 @@
                                     <p:separator/>
                                     <p:spacer height="30"/>
 
-                                    <p:commandButton value="Modifier client"
-                                                     action="#{menuConseillerBean.doSaveNewQueen}"/>
+                                    <p:commandButton value="Creer Conseiller"
+                                                     action="#{menuGerantBean.creerConseiller}"/>
 
                                 </p:outputPanel>
                             </p:dialog>

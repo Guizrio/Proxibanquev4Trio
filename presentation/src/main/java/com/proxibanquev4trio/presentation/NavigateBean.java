@@ -149,4 +149,9 @@ public class NavigateBean implements Serializable{
 //    public void setErrorBean(ErrorBean errorBean) {
 //        this.errorBean = errorBean;
 //    }
+    
+    
+    public String redirectToMenuGerant(){
+    	return "/menugerant.xhtml?faces-redirect=true";
+    }
 }
