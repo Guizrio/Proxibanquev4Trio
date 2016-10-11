@@ -15,6 +15,8 @@ public class NavigateBean implements Serializable{
 
     private static final long serialVersionUID = 2L;
 
+    private final static String BASE_PATH = "";
+
 //    @ManagedProperty(value="#{errorBean}")
 //    @Inject
 //    private ErrorBean errorBean;
@@ -28,11 +30,7 @@ public class NavigateBean implements Serializable{
      * @return l'adresse de la page login
      */
     public String redirectToLogin(){
-        return "/login.xhtml?faces-redirect=true";
-    }
-    
-    public String redirectToTransaction(){
-        return "/rapporttransactions.xhtml?faces-redirect=true";
+        return BASE_PATH + "/login.xhtml?faces-redirect=true";
     }
 
     /**
@@ -41,23 +39,28 @@ public class NavigateBean implements Serializable{
      * @return l'adresse relative de la page login
      */
     public String toLogin(){
-        return "/login.xhtml";
+        return BASE_PATH + "/login.xhtml";
+    }
+
+
+
+
+    public String redirectToRapportTransaction(){
+        return BASE_PATH + "/rapporttransactions.xhtml?faces-redirect=true";
     }
 
     public String toRapportTransaction(){
-    	return "/secured_pages/rapporttransactions.xhtml";
+    	return BASE_PATH + "/rapporttransactions.xhtml";
     }
-    
-    public String redirectToRapportTransaction(){
-    	return "/secured_pages/rapporttransactions.xhtml?faces-redirect=true";
-    }
+
+
     /**
      * Permet de rediriger vers la page des clients du conseiller
      *
      * @return l'adresse de la page menuconseiller
      */
     public String redirectToMenuConseiller(){
-        return "/secured_pages/menuconseiller.xhtml?faces-redirect=true";
+        return BASE_PATH + "/menuconseiller.xhtml?faces-redirect=true";
     }
 
 
@@ -67,7 +70,7 @@ public class NavigateBean implements Serializable{
      * @return l'adresse relative de la page menuconseiller
      */
     public String toMenuConseiller(){
-        return "/secured_pages/menuconseiller.xhtml";
+        return BASE_PATH + "/menuconseiller.xhtml";
     }
 
 
@@ -77,7 +80,7 @@ public class NavigateBean implements Serializable{
      * @return l'adresse de la page menuconseiller
      */
     public String redirectToVirement(){
-        return "/secured_pages/virement.xhtml?faces-redirect=true";
+        return BASE_PATH + "/virement.xhtml?faces-redirect=true";
     }
 
 
@@ -87,7 +90,7 @@ public class NavigateBean implements Serializable{
      * @return l'adresse relative de la page virement
      */
     public String toVirement(){
-        return "/secured_pages/virement.xhtml";
+        return BASE_PATH + "/virement.xhtml";
     }
 
 
@@ -110,7 +113,7 @@ public class NavigateBean implements Serializable{
 //        }
 
 //        errorBean.setMessage(messagePerso);
-        return "/secured_pages/error.xhtml?faces-redirect=true";
+        return BASE_PATH + "/error.xhtml?faces-redirect=true";
 
     }
 
@@ -134,7 +137,7 @@ public class NavigateBean implements Serializable{
 //        }
 
 //        errorBean.setMessage(messagePerso);
-        return "/secured_pages/error.xhtml";
+        return BASE_PATH + "/error.xhtml";
 
     }
 
