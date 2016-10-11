@@ -29,9 +29,9 @@
                         <p:spacer height="2"/>
                         <p:commandLink update=":login-form:form:clientCreateDetail"
                                        oncomplete="PF('clientCreateDialog').show()"
-                                       title="Créer un client">
+                                       title="Créer un conseiller">
 
-                            <h:outputText value="Créer un client" style="margin:0 auto;"/>
+                            <h:outputText value="Créer un conseiller" style="margin:0 auto;"/>
                             <f:setPropertyActionListener value="#{menuGerantBean.conseillerToCreate}"
                                                          target="#{menuGerantBean.conseillerToCreate}"/>
                         </p:commandLink>
@@ -217,8 +217,8 @@
                                     <p:separator/>
                                     <p:spacer height="30"/>
 
-                                    <p:commandButton value="Creer client"
-                                                     action="#{menuGerantBean.creerClient}"/>
+                                    <p:commandButton value="Creer conseiller"
+                                                     action="#{menuGerantBean.creerConseiller}"/>
 
                                 </p:outputPanel>
                             </p:dialog>
