@@ -42,7 +42,8 @@ public class MenuConseillerBean {
 	public void init() {
 
 		loginBean = (LoginBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring-service.xml");
+		ApplicationContext context = loginBean.getContext();
+//				new ClassPathXmlApplicationContext("spring-service.xml");
 		clientService = context.getBean(IClientService.class);
 		try {
 
@@ -59,6 +60,7 @@ public class MenuConseillerBean {
 			clientToCreate.setAdresse(adresse);
 			clientToCreate.setEmail("Choisir un mail");
 			clientToCreate.setTelephone("Choisir un num de telephone");
+			clientToCreate.setConseiller(loginBean.getConseiller());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -131,13 +133,14 @@ public class MenuConseillerBean {
 	public String creerClient() {
 		// ClientService clientService = new ClientService();
 		// LoginBean loginBean = (LoginBean)
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
+//		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
 
 		// clientToCreate.setConseiller(loginBean.getConseiller());
 
 		try {
 
 			clientService.creerClient(clientToCreate);
+			
 			// return loginBean.getNavigateBean().redirectToMenuConseiller();
 
 		} catch (Exception e) {

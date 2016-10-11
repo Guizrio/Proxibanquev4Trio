@@ -17,8 +17,7 @@ public class CompteCourant extends Compte {
     
 	private Double decouvert;
 	
-	@OneToOne
-	private Client client;
+	
 
     
     
@@ -52,14 +51,6 @@ public CompteCourant (){
 
 
 
-	public Client getClient() {
-		return client;
-	}
-
-
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
+	
     
 }

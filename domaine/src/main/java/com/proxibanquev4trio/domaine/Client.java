@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,15 +33,15 @@ public class Client{
 	protected String nom;
 	protected String telephone;
 	
-	@OneToOne(cascade=CascadeType.PERSIST)
+	@OneToOne(cascade=CascadeType.ALL)
 	protected Adresse adresse;
 	
   private String email;
   
-  @OneToMany(cascade=CascadeType.PERSIST)
+  @OneToMany(cascade=CascadeType.PERSIST, mappedBy="client", fetch=FetchType.EAGER)
   protected List<Compte> listeCompte;
   
-  @ManyToOne(cascade=CascadeType.PERSIST)
+  @ManyToOne(cascade=CascadeType.MERGE)
   private Conseiller conseiller;
 
   /**Constructeur de la classe Client, reprenant le constructeur de la classe Humain :

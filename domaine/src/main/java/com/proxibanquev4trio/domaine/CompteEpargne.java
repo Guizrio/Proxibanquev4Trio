@@ -16,9 +16,7 @@ import javax.persistence.OneToOne;
 public class CompteEpargne extends Compte{
    
 	private Double taux;
-	
-	@OneToOne
-	private Client client;
+
 
     /**
 	 * Constructeur de la classe CompteEpargne avec comme paramètres :
@@ -44,12 +42,5 @@ public class CompteEpargne extends Compte{
         this.taux = taux;
     }
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
     
 }

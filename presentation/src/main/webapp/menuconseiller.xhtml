@@ -169,17 +169,13 @@
                                             <h:graphicImage library="images" name="thomasT.jpg"/>
                                         </f:facet>
 
-                                        <p:dataTable id="matabledescompte" var="compte" value="#{menuConseillerBean.selectedClient.comptes}" >
+                                        <p:dataTable id="matabledescompte" var="compte" value="#{menuConseillerBean.selectedClient.listeCompte}" >
                                             <p:column headerText="Id">
-                                                <h:outputText value="#{compte.idCompte}"/>
+                                                <h:outputText value="#{compte.id}"/>
                                             </p:column>
 
                                             <p:column headerText="date d'ouverture">
                                                 <h:outputText value="#{compte.dateOuverture}"/>
-                                            </p:column>
-
-                                            <p:column headerText="numero de compte">
-                                                <h:outputText value="#{compte.numCompte}"/>
                                             </p:column>
 
                                             <p:column headerText="solde">

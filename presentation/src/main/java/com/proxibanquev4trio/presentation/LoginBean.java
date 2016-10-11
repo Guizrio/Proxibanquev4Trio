@@ -44,7 +44,7 @@ public class LoginBean implements Serializable {
 	// private AuthService authService;
 	 private IConseillerService conseillerService;
 	private Conseiller conseiller;
-
+	private ApplicationContext context;
 	public LoginBean() {
 	}
 	
@@ -53,7 +53,7 @@ public class LoginBean implements Serializable {
 		loggedIn = true;
 		// authService = new AuthService();
 		// conseillerService = new ConseillerService();
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring-service.xml");
+		context = new ClassPathXmlApplicationContext("spring-service.xml");
 		conseillerService = context.getBean(IConseillerService.class);
 		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();
@@ -150,6 +150,16 @@ public class LoginBean implements Serializable {
 	public void setConseiller(Conseiller conseiller) {
 		this.conseiller = conseiller;
 	}
+
+	public ApplicationContext getContext() {
+		return context;
+	}
+
+	public void setContext(ApplicationContext context) {
+		this.context = context;
+	}
+	
+	
 }
 //@ManagedBean(name = "loginBean")        //Sert juste à avoir l'autocomplétion et la recherche incrémentale d'intelliJ dans les pages xhtml (EL interact)
 //@Named

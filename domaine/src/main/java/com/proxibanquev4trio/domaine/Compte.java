@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  * Classe abstraite compte, définissant les propriétés de base d'un compte
@@ -27,10 +29,12 @@ public abstract class Compte {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private Date dateouverture;
+    private Date dateOuverture;
     private Double solde;
     protected String type;
 
+    @ManyToOne
+	private Client client;
     
     /**
 	 * Constructeur de la classe Compte avec comme paramètre :
@@ -45,7 +49,7 @@ public abstract class Compte {
 	 */
     protected Compte(Long id, Timestamp dateouverture, Double solde) {
         this.id = id;
-        this.dateouverture = dateouverture;
+        this.dateOuverture = dateouverture;
         this.solde = solde;
     }
     
@@ -59,12 +63,12 @@ public abstract class Compte {
         this.id = id;
     }
 
-    public Date getDateouverture() {
-        return dateouverture;
+    public Date getDateOuverture() {
+        return dateOuverture;
     }
 
-    public void setDateouverture(Date dateouverture) {
-        this.dateouverture = dateouverture;
+    public void setDateOuverture(Date dateouverture) {
+        this.dateOuverture = dateouverture;
     }
 
     public Double getSolde() {
@@ -79,7 +83,13 @@ public abstract class Compte {
         return type;
     }
 
+    public Client getClient() {
+		return client;
+	}
 
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	public Compte() {
 		super();
