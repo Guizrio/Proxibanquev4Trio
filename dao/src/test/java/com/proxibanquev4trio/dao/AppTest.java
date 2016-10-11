@@ -3,6 +3,11 @@ package com.proxibanquev4trio.dao;
 import com.proxibanquev4trio.domaine.Client;
 import com.proxibanquev4trio.domaine.Conseiller;
 import com.proxibanquev4trio.domaine.Gerant;
+import com.proxibanquev4trio.domaine.Virement;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -20,6 +25,7 @@ public class AppTest  {
 	private IClientDao daoClient = (IClientDao) appContext.getBean(IClientDao.class);
 	private IConseillerDao daoConseiller = (IConseillerDao) appContext.getBean(IConseillerDao.class);
 	private IGerantDao daoGerant = (IGerantDao) appContext.getBean(IGerantDao.class);
+	private IVirementDao daoVirement=(IVirementDao) appContext.getBean(IVirementDao.class);
 
 
 
@@ -54,6 +60,16 @@ public class AppTest  {
 		System.out.println(liste.getNom());
 		System.out.println(liste.getPwd());
 		System.out.println(liste.getClients().get(0).getNom());
+	}
+	
+	@Test
+	public void testFindAllVirement(){
+		
+		List<Virement> liste=daoVirement.findAll();
+		
+		System.out.println(liste.get(0).getDate());
+		
+		
 	}
 
 }

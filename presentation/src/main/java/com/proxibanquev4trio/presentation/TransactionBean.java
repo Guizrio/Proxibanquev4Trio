@@ -14,12 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
+import org.springframework.context.ApplicationContext;
 
 import com.proxibanquev4trio.domaine.Conseiller;
 import com.proxibanquev4trio.domaine.Gerant;
 import com.proxibanquev4trio.domaine.Virement;
+import com.proxibanquev4trio.services.IClientService;
 import com.proxibanquev4trio.services.IConseillerService;
 import com.proxibanquev4trio.services.IVirementService;
 
@@ -34,8 +37,8 @@ public class TransactionBean implements Serializable {
 		private boolean loggedIn;
 		
 		private List<Virement> liste;
-
-		private LineChartModel lineModel1;
+		private LoginBean loginBean;
+		private LineChartModel dateModel;
 		
 		@Inject
 		private IVirementService virementService;
@@ -45,62 +48,85 @@ public class TransactionBean implements Serializable {
 		private NavigateBean navigateBean;
 		
 		
-		
-		
 		@PostConstruct
 	    public void init() {
-	        createLineModels();
+	        createDateModel();
+	    }
+	 
+	    
+	     
+	    private void createDateModel() {
+	        dateModel = new LineChartModel();
+	        LineChartSeries series1 = new LineChartSeries();
+	        series1.setLabel("Series 1");
+	 
+	        series1.set("2016-01-01", 51D);
+	        series1.set("2016-01-06", 22D);
+	        series1.set("2016-01-12", 65D);
+	        series1.set("2016-01-18", 74D);
+	        series1.set("2016-01-24", 24D);
+	        series1.set("2016-01-30", 51D);
+	        
+
+	        dateModel.addSeries(series1);
+	         
+	        dateModel.setTitle("Rapport Transactions 2016");
+	        dateModel.setZoom(true);
+	        dateModel.getAxis(AxisType.Y).setLabel("Valeurs en euros");
+	        DateAxis axis = new DateAxis("Dates");
+	        axis.setTickAngle(-50);
+	        axis.setMax("2016-12-31");
+	        axis.setTickFormat("%b %#d, %y");
+	         
+	        dateModel.getAxes().put(AxisType.X, axis);
 	    }
 		
-		private void createLineModels() {
-	        lineModel1 = initLinearModel();
-	        lineModel1.setTitle("Linear Chart");
-	        lineModel1.setLegendPosition("e");
-	        Axis yAxis = lineModel1.getAxis(AxisType.Y);
-	        yAxis.setLabel("Valeur");
-	        yAxis.setMin(0);
-	        yAxis.setMax(maxTransaction());
+		
+		
+		private void createDateModel2() {
+			dateModel = new LineChartModel();
+			LineChartSeries series1 = new LineChartSeries();
+	        series1.setLabel("Valeurs transferts d'argent");
+	 
+	        
+	        series1.set("2016-01-01", 51);
+	        series1.set("2016-01-06", 22);
+	        series1.set("2016-01-12", 65);
+	        series1.set("2016-01-18", 74);
+	        series1.set("2016-01-24", 24);
+	        series1.set("2016-01-30", 51);
+//	        for(int i=0 ; i<liste.size() ; i++){
+//	        	
+//	        	series1.set("2016-10-01", 5);
+//	        }
+
+	        dateModel.addSeries(series1);
+	        
+	        dateModel.setTitle("Virements");
+	        dateModel.setZoom(true);
+	        dateModel.getAxis(AxisType.Y).setLabel("Valeur");
+	        DateAxis axisy = new DateAxis("Dates");
+	        axisy.setTickAngle(-50);
+	        axisy.setMax("2016-02-01");
+	        axisy.setTickFormat("%b %#d, %y");
+	         
+	        dateModel.getAxes().put(AxisType.X, axisy);
 	            
 	    }
 		
-		private double maxTransaction(){
-			
-			double max =0;
-			for(int i=0 ; i<liste.size() ; i++){
-				
-				double valeur=liste.get(i).getMontant();
-				if(valeur>max){
-					max=valeur;
-				}
-				
-			}
-			
-			return max;
-			
-			
-		}
-		private LineChartModel initLinearModel() {
-	        LineChartModel model = new LineChartModel();
-	 
-	        LineChartSeries series1 = new LineChartSeries();
-	        series1.setLabel("Valeurs transferts d'argent");
-	 
-	        for(int i=0 ; i<liste.size() ; i++){
-	        	series1.set(liste.get(i).getDate(), liste.get(i).getMontant());
-	        }
-
-	        model.addSeries(series1);
-	       
-	        return model;
-	    }
+		
 		
 		public TransactionBean() {
+			
+			loginBean = (LoginBean) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("loginBean");
+			ApplicationContext context = loginBean.getContext();
+			virementService = context.getBean(IVirementService.class);
 			loggedIn = true;
 			
 			HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 					.getRequest();
 
-			List<Virement> liste= virementService.getAllVirement();
+			this.liste= virementService.getAllVirement();
 		}
 
 		public boolean isGerant() {
@@ -166,6 +192,23 @@ public class TransactionBean implements Serializable {
 			this.navigateBean = navigateBean;
 		}
 
+		public LoginBean getLoginBean() {
+			return loginBean;
+		}
+
+		public void setLoginBean(LoginBean loginBean) {
+			this.loginBean = loginBean;
+		}
+
+		public LineChartModel getDateModel() {
+			return dateModel;
+		}
+
+		public void setDateModel(LineChartModel dateModel) {
+			this.dateModel = dateModel;
+		}
+
+		
 		
 	}
 

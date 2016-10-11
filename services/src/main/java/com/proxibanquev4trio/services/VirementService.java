@@ -82,4 +82,16 @@ public class VirementService implements IVirementService {
 	}
 
 
+
+	public IVirementDao getVirementDao() {
+		return virementDao;
+	}
+
+
+
+	public void setVirementDao(IVirementDao virementDao) {
+		this.virementDao = virementDao;
+	}
+
+
 }
