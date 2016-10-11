@@ -22,7 +22,7 @@
         <ui:define name="content">
             <f:view>
 
-                <h:form id="login-form">
+                           <h:form id="login-form">
                     <p:panel header="Bonjour #{loginBean.conseiller.prenom} #{loginBean.conseiller.nom}"
                              style="margin-bottom:10px;">
                         
@@ -31,7 +31,7 @@
                                        oncomplete="PF('clientCreateDialog').show()"
                                        title="Créer un client">
 
-                            <h:outputText value="Créer un conseiller" style="margin:0 auto;"/>
+                            <h:outputText value="Créer un client" style="margin:0 auto;"/>
                             <f:setPropertyActionListener value="#{menuGerantBean.conseillerToCreate}"
                                                          target="#{menuGerantBean.conseillerToCreate}"/>
                         </p:commandLink>
@@ -45,7 +45,7 @@
                                         rowsPerPageTemplate="6,12,16">
 
                                 <f:facet name="header">
-                                    Vous pouvez voir votre liste des clients ici
+                                    Vous pouvez voir votre liste des conseillers ici
                                 </f:facet>
 
                                 <p:panel header="#{conseiller.id}" style="text-align:center">
@@ -61,7 +61,7 @@
 
                                         <p:commandLink update=":login-form:form:clientDetail"
                                                        oncomplete="PF('clientDialog').show()"
-                                                       title="Détail des clients">
+                                                       title="Détail des conseillers">
                                             <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;"/>
                                             <f:setPropertyActionListener value="#{conseiller}"
                                                                          target="#{menuGerantBean.selectedConseiller}"/>
@@ -69,13 +69,12 @@
 
                                         <p:spacer height="1"/>
 
-
                                     </h:panelGrid>
                                 </p:panel>
 
                             </p:dataGrid>
 
-                            <p:dialog header="Client Infos" widgetVar="clientDialog" modal="true" showEffect="fade"
+                            <p:dialog header="Conseiller Infos" widgetVar="clientDialog" modal="true" showEffect="fade"
                                       hideEffect="fade" resizable="false">
                                 <p:outputPanel id="clientDetail" style="text-align:center;">
                                     <p:panelGrid columns="2" rendered="#{not empty menuGerantBean.selectedConseiller}"
@@ -99,9 +98,9 @@
                                                          required="true" label="text"/>
                                         </p:inplace>
 
-                                        <h:outputLabel for="mail" value="Mail:"/>
-                                        <p:inplace id="mail" editor="true">
-                                            <p:inputText value="#{menuGerantBean.selectedConseiller.email}"
+                                        <h:outputLabel for="login" value="Login:"/>
+                                        <p:inplace id="login" editor="true">
+                                            <p:inputText value="#{menuGerantBean.selectedConseiller.login}"
                                                          required="true" label="text"/>
                                         </p:inplace>
 
@@ -144,11 +143,12 @@
                                     <p:separator/>
                                     <p:spacer height="30"/>
 
-                                    <p:commandButton value="Modifier Conseiller"
-                                                     action="#{menuConseillerBean.updateClient}"/>
+                                    <p:commandButton value="Modifier conseiller"
+                                                     action="#{menuGerantBean.updateConseiller}"/>
 
                                 </p:outputPanel>
                             </p:dialog>
+
 
 
                             <p:dialog header="Création de client" widgetVar="clientCreateDialog" modal="true" showEffect="fade"
@@ -172,7 +172,7 @@
                                                          required="true" label="text"/>
                                         </p:inplace>
 
-                                        <h:outputLabel for="createlogin" value="login:"/>
+                                        <h:outputLabel for="createlogin" value="Login:"/>
                                         <p:inplace id="createlogin" editor="true">
                                             <p:inputText value="#{menuGerantBean.conseillerToCreate.login}"
                                                          required="true" label="text"/>
@@ -217,8 +217,8 @@
                                     <p:separator/>
                                     <p:spacer height="30"/>
 
-                                    <p:commandButton value="Creer Conseiller"
-                                                     action="#{menuGerantBean.creerConseiller}"/>
+                                    <p:commandButton value="Creer client"
+                                                     action="#{menuGerantBean.creerClient}"/>
 
                                 </p:outputPanel>
                             </p:dialog>

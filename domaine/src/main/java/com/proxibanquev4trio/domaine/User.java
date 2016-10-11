@@ -2,6 +2,7 @@ package com.proxibanquev4trio.domaine;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public abstract class User {
 	protected String nom;
 	protected String telephone;
 	
-	@OneToOne(cascade=CascadeType.PERSIST)
+	@OneToOne(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
 	protected Adresse adresse;
 	
 	private String role;

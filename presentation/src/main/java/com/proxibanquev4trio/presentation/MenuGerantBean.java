@@ -75,7 +75,7 @@ public class MenuGerantBean {
 		return conseillers;
 	}
 
-	public void setClients(List<Conseiller> conseillers) {
+	public void setConseillers(List<Conseiller> conseillers) {
 		this.conseillers = conseillers;
 	}
 

@@ -152,6 +152,6 @@ public class NavigateBean implements Serializable{
     
     
     public String redirectToMenuGerant(){
-    	return "/menugerant.xhtml?faces-redirect=true";
+    	return BASE_PATH + "/menugerant.xhtml?faces-redirect=true";
     }
 }
