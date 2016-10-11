@@ -4,8 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <f:view>
-    <h:outputLabel value="Aie, vous vous etes trompés de login"/>
+    <p:panel header="Avis de déconnection">
+        <h:outputLabel value="Vous avez bien été déconnecté. Vous allez à présent être redirigé vers la page d'accueil"/>
+        <p:commandButton>
+            <a href="login/entry">OK</a>
+        </p:commandButton>
+    </p:panel>
 </f:view>
 </html>

@@ -5,12 +5,12 @@ import com.proxibanquev4trio.domaine.User;
 import com.proxibanquev4trio.services.IConseillerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.HEAD;
 
 /**
  * Created by Guillaume on 10/10/2016.
@@ -26,8 +26,9 @@ public class ConseillerControleur {
     @Inject
     LoginBean loginBean;
 
+    private String sortie;
 
-    @RequestMapping({"/entry"})
+    @RequestMapping(value = {"/entry"}, method = {RequestMethod.GET, RequestMethod.POST})
     protected ModelAndView listeEmployes(HttpServletRequest request,
                                          HttpServletResponse response) throws Exception {
 		/*
@@ -68,17 +69,20 @@ public class ConseillerControleur {
         return new ModelAndView("menuconseiller");
     }
 
-    @RequestMapping("/disconnect")
+    @RequestMapping(value = {"/disconnect"}, method = {RequestMethod.GET, RequestMethod.POST})
     protected ModelAndView disconnect(HttpServletRequest request,
                                          HttpServletResponse response) throws Exception {
-
         request.getSession().invalidate();
+//        request.getRequestDispatcher("/index.jsp").forward(request, response);
         return new ModelAndView("test");
-
     }
 
 
+    public String getSortie() {
+        return "/pages/login/entry";
+    }
 
-
-
+    public void setSortie(String sortie) {
+        this.sortie = sortie;
+    }
 }
