@@ -123,6 +123,16 @@ public void setListeCompte(List<Compte> listeCompte) {
 	this.listeCompte = listeCompte;
 }
 
+public boolean isDecouvert(){
+	boolean decouvert=false;
+	for (Compte e:listeCompte){
+		if (e.getSolde()<0){
+			decouvert=true;
+		}
+	}
+	return decouvert;
+	
+}
 
   
 }

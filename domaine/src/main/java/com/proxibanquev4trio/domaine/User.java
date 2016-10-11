@@ -21,7 +21,7 @@ public abstract class User {
 	protected String nom;
 	protected String telephone;
 	
-	@OneToOne(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	protected Adresse adresse;
 	
 	private String role;

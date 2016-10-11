@@ -55,7 +55,8 @@
                                         <h:outputText value="#{client.prenom} #{client.nom}"/>
                                         <h:outputText value="id = #{client.id}"/>
 
-
+										<h:outputText value="le client est à decouvert" rendered="#{client.decouvert}" style="color:red"/>
+										
                                         <p:separator/>
 
 
